@@ -1,0 +1,21 @@
+NUR DIESEN ORDNER HOCHLADEN
+
+Der Desktop-Ordner GA36-Android/github enthält die ausgewählte Veröffentlichung.
+Der übergeordnete Ordner GA36-Android enthält das vollständige private Archiv
+und darf NICHT als Ganzes hochgeladen werden.
+
+Es wurde noch nichts auf GitHub erstellt oder veröffentlicht.
+
+1. Auf GitHub ein neues Repository namens GA36-Android erstellen.
+2. Ausschließlich den Inhalt dieses github-Ordners hinzufügen.
+3. Vor dem Veröffentlichen tools/check-publication.py mit Python3 ausführen.
+4. In den Repository-Einstellungen Discussions aktivieren.
+5. docs/discussion.md als neue Discussion verwenden.
+
+Nicht enthalten: Stock-ROM, Android-Abbilder, Spiele, vollständige SD-Abbilder,
+Schlüssel, rohe Gerätelogs, fremde Toolchains oder installierbare Firmware.
+
+Es ist noch keine allgemeine Projektlizenz ausgewählt. Deshalb keine fertige
+lizenzgeklärte Open-Source-ROM oder vollständige Installationslösung versprechen.
+Die Bestandsaufnahme beschreibt genau den enthaltenen Umfang. Ein automatischer
+Dateiscan ist keine hundertprozentige juristische Garantie.

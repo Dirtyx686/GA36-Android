@@ -1,0 +1,26 @@
+# GA36 Android menu navigation profile; original scancodes retained.
+# Derived from stock udt_joystick.ko, digital inputs active-low.
+# Candidate filename micro_gamepad.kl follows platform_device.name.
+# Confirm /proc/bus/input/devices before deployment. Physical button legends unverified.
+
+key 311 BUTTON_R1        # PE17 BTN_TR
+key 313 BUTTON_R2        # PE16 BTN_TR2
+key 310 BUTTON_L1        # PE15 BTN_TL
+key 312 BUTTON_L2        # PE14 BTN_TL2
+key 304 DPAD_CENTER         # PE13 BTN_SOUTH
+key 305 BACK         # PE12 BTN_EAST
+key 307 MENU         # PE11 BTN_NORTH
+key 308 APP_SWITCH         # PE10 BTN_WEST
+key 546 DPAD_LEFT        # PE07 BTN_DPAD_LEFT
+key 547 DPAD_RIGHT       # PE06 BTN_DPAD_RIGHT
+key 544 DPAD_UP          # PE09 BTN_DPAD_UP
+key 545 DPAD_DOWN        # PE08 BTN_DPAD_DOWN
+key 314 BACK    # PE05 BTN_SELECT
+key 315 HOME     # PE04 BTN_START
+key 317 BUTTON_THUMBL    # PB03 BTN_THUMBL
+key 318 BUTTON_THUMBR    # PB02 BTN_THUMBR
+
+axis 0x00 X
+axis 0x01 Y
+axis 0x03 Z
+axis 0x04 RZ

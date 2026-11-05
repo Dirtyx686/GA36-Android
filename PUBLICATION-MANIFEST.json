@@ -1,0 +1,100 @@
+{
+  "scope": "Reviewed source and documentation only",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 237,
+      "sha256": "a39fb37a4fda47b193903cde7abec1aee1e8c9f140ec82e63527486e49aa93c8"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 1604,
+      "sha256": "510cffb5d63846bb19ec0b16dc9e0afccd5d31e3f8d575cd645a7ed466ab0ec8"
+    },
+    {
+      "path": "PUBLICATION-SCOPE.md",
+      "bytes": 1177,
+      "sha256": "362d3b2f3f6dc3201474d6e78aec1c9b6c4b6475403a6111d8228a8fca5ec514"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2538,
+      "sha256": "382fb9074f40d6e9bd228216fc23af511513c76acedcfb351c4ccb2f83c3bc6d"
+    },
+    {
+      "path": "config/idc/GA36_UI_Pointer.idc",
+      "bytes": 81,
+      "sha256": "53db5b81db0638c7cee75c1c33389615e01a93a6aae0d506526700d2a4c27342"
+    },
+    {
+      "path": "config/idc/axp22-supplyer.idc",
+      "bytes": 20,
+      "sha256": "42873853caf548405339cf426b8ef32a54563c1a5d3d52f97c959bf5773fd1ff"
+    },
+    {
+      "path": "config/idc/micro_gamepad.idc",
+      "bytes": 81,
+      "sha256": "53db5b81db0638c7cee75c1c33389615e01a93a6aae0d506526700d2a4c27342"
+    },
+    {
+      "path": "config/idc/udt_keyboard.idc",
+      "bytes": 81,
+      "sha256": "53db5b81db0638c7cee75c1c33389615e01a93a6aae0d506526700d2a4c27342"
+    },
+    {
+      "path": "config/keylayout/axp22-supplyer.kl",
+      "bytes": 14,
+      "sha256": "db011ac08ec170390f9e9c9cbfd13cb4f73f8e7bd9cdd9a3f6bf08f706a17d14"
+    },
+    {
+      "path": "config/keylayout/micro_gamepad.kl",
+      "bytes": 1000,
+      "sha256": "74710b57afce0fccc11153d781fbf2117dd0c91e12c54597d0f4b194d61620f2"
+    },
+    {
+      "path": "config/keylayout/udt_keyboard.kl",
+      "bytes": 72,
+      "sha256": "a7999f368d6da13f3d396f4b33c4f55c2ac5e6bf038ef03741bcc4a879579d22"
+    },
+    {
+      "path": "docs/VEROEFFENTLICHEN.txt",
+      "bytes": 1091,
+      "sha256": "a00fd1dd73025489611bce605f9a3e0b4640cc596e81ccbb58ada9c12993c8b7"
+    },
+    {
+      "path": "docs/discussion.md",
+      "bytes": 3347,
+      "sha256": "0dc0eb0a8ae148940e1790ba7b7a803d958ee38f6ad36903ec251284a3e01171"
+    },
+    {
+      "path": "docs/power-button.md",
+      "bytes": 1740,
+      "sha256": "95438c71c2b52296bff1d80b658bbb35afc22c3ed50c8f04a1f2df1f7582cc00"
+    },
+    {
+      "path": "docs/usb-status.md",
+      "bytes": 1276,
+      "sha256": "1b60b56e1117b8172c09d2a066fa6ed28d77b43ffe6f7c8b2569dd3016151bf4"
+    },
+    {
+      "path": "src/ga36-pointer.c",
+      "bytes": 7121,
+      "sha256": "30d0c0b04c9c1619d019a6b7b941853be9d8c01b188fd6ae47ff6fe2c48b8b16"
+    },
+    {
+      "path": "src/lights-ga36.c",
+      "bytes": 4185,
+      "sha256": "cfaae3c87c16bb178dee22020886e76da1b9fc69f1e77ca198f35e20fb8b0980"
+    },
+    {
+      "path": "src/test-kernel-branches.c",
+      "bytes": 900,
+      "sha256": "a93f39bac7b69e5739f37cde643d8cd50306746134362b3c33cbce923d20a98a"
+    },
+    {
+      "path": "tools/check-publication.py",
+      "bytes": 1941,
+      "sha256": "ef612d6a17e31449119f351681975c91d1c9a8b7284ade342d0c97fc29ec9c03"
+    }
+  ]
+}
