@@ -1,41 +1,63 @@
-# GA36 Android — Android 7.0 progress
+# GA36 Android
 
-Experimental Android bring-up for the **GA36-MB V1.2-20260416** R36S-style handheld. The project has progressed from Android 5.0 through Android 6 to **Android 7.0 Nougat / API 24**.
+I'm working on an Android port for my R36S-style handheld with a **GA36-MB V1.2-20260416** board. I started with Android 5.0, moved through Android 6, and now have **Android 7.0 Nougat / API 24** running on the device.
 
-Runtime analysis identifies the platform as **Allwinner A33 with 512 MB RAM**. Photographed chip markings differ from the runtime identification; donor model strings alone are not treated as hardware identification. Compatibility with other board revisions or A33 devices is not established.
+I develop this project **with AI assistance**. I use AI tools to help analyse the firmware, write and adapt code, investigate problems, and prepare documentation. I test the changes on my own handheld. A successful build or an AI-generated explanation is not enough for me to call a feature working — I distinguish local checks from actual device tests below.
 
-**This is a development repository, not a ready-to-flash firmware release. No stock firmware, Android images, game ROMs, card images or private keys are included.**
+## My hardware
 
-## Current status — 6 November 2026
+Runtime analysis identifies my board as **Allwinner A33 with 512 MB RAM**. The photographed chips have Rockchip markings, which differ from that runtime identification.
 
-| Component | Status |
-| --- | --- |
-| Current Android build | V41 running on the V38 direct-boot baseline; owner reports the currently used functions are working; existing vendor kernel retained |
-| Custom kernel | V39 compiled locally; not installed or boot-tested |
-| Recovery | Experimental TWRP development paused indefinitely at the owner's request; working device UI not confirmed |
-| PC USB / OTG hub and flash drive | Unresolved |
+So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm compatibility with other revisions or other A33 handhelds.
 
-Android 7 is the permanent boot target. Android 5 and 6 are no longer bootable systems on the test card; earlier states remain in local backups.
+## Where the project stands
 
-The owner reports that **V41 is running with the currently used functions working**. Development has established Android startup and apps, audio, gamepad navigation, right-stick mouse control with R1 click, display wake and Power-button operation. This is an initial device report, not an endurance test or a complete compatibility assessment. PC USB and OTG operation have not been separately confirmed.
+**V41 is currently running on my device**, using the V38 direct-boot baseline and the existing vendor kernel. The functions I currently use are working in my initial testing:
 
-V41 includes a built-in speaker routing guard and a dark display handoff. It retains the known V38 boot baseline and existing vendor kernel; the custom V39 kernel is not installed.
+- Android startup and apps
+- Audio
+- Gamepad menu navigation
+- Right-stick mouse control with R1 click
+- Display off and wake
+- Power-button operation
 
-## Custom kernel V39
+I still need longer testing and further checks after changes. **PC USB connectivity and OTG hub/flash-drive support remain unresolved.**
 
-The separate local build passes static compatibility checks for five modules: `disp`, `mali`, `lcd`, `gpio-sunxi` and `udt_joystick`. All **377 versioned imports** match, with no CRC overrides.
+Android 7 is my permanent boot target. Android 5 and 6 are no longer bootable systems on the test card, but I have kept earlier states in local backups.
 
-The analog input receive path is still open. Boot, graphics, controls, sound, wake and Power behavior have not been validated with this kernel. **V39 remains uninstalled.**
+V41 includes a built-in speaker routing guard and a dark display handoff. It retains the existing boot baseline and vendor kernel. I haven't installed my separate custom kernel yet.
 
-## Recovery work
+## My custom kernel work
 
-A GA36-specific experimental TWRP build passed local ARM emulator self-tests, but a working recovery UI on the handheld has not been confirmed. Recovery development is paused indefinitely.
+I've compiled a separate **V39 development kernel** locally. Static compatibility checks pass for five modules: `disp`, `mali`, `lcd`, `gpio-sunxi` and `udt_joystick`. All **377 versioned imports** match, without CRC overrides.
 
-The Android V38 startup path was restored and verified by direct readback after recovery testing.
+That doesn't mean the kernel works on the handheld yet. The analog input receive path is still open, and I haven't tested boot, graphics, controls, audio, wake or Power behavior with this kernel.
+
+**V39 has not been installed on the SD card.** I also haven't measured a performance improvement.
+
+## Recovery experiments
+
+I've also worked on an experimental TWRP build and a GA36-specific recovery configuration. Local ARM emulator self-tests passed, but I haven't confirmed a working recovery UI on the device.
+
+I've **paused TWRP development indefinitely** for now. After the recovery tests, I restored the V38 Android startup path and verified it by direct card readback. My current Android build runs on that boot baseline.
+
+## What you'll find here
+
+The implementation files I've published so far mainly come from the **earlier Android 5 bring-up**:
+
+- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper.
+- `src/lights-ga36.c`: experimental Android 5 ARM32 backlight HAL.
+- `src/test-kernel-branches.c`: isolated ARM test for the Power-event suppression change.
+- `config/`: board-specific input mappings and device policy.
+- `docs/power-button.md` and `docs/usb-status.md`: earlier technical findings.
+
+I've added Android 7 progress reports and selected validation metadata. The full Android 7, custom-kernel and recovery implementations are **not published here yet**.
+
+**This repository is not a ready-to-flash release or a complete installation package. I haven't included stock firmware, Android images, game ROMs, full card images or private keys.**
 
 ## Development reports
 
-The linked reports are earlier, dated development snapshots. They distinguish device-confirmed results from offline validation and pending hardware tests. They predate the latest V41 owner confirmation; this README records the newer status.
+These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. They predate my latest V41 confirmation, so this README records the newer overall status.
 
 - [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
 - [Android 7 status and evidence categories](docs/updates/2026-11-06/android7-status.json)
@@ -43,31 +65,29 @@ The linked reports are earlier, dated development snapshots. They distinguish de
 - [TWRP status](docs/updates/2026-11-06/twrp-status.json)
 - [Evidence index](docs/updates/2026-11-06/evidence-index.json)
 
-## Published source code
+## What I want to work on next
 
-The published implementation files currently cover the **earlier Android 5 bring-up**, not a complete Android 7 build:
-
-- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper.
-- `src/lights-ga36.c`: experimental Android 5 ARM32 backlight HAL.
-- `src/test-kernel-branches.c`: isolated ARM execution test for the Power-event suppression change.
-- `config/`: board-specific input mappings and device policy.
-- `docs/power-button.md` and `docs/usb-status.md`: earlier technical findings.
-
-The full Android 7, kernel and recovery implementations are not included. These components are not a complete installer or a generic port for other A33 devices.
-
-## Remaining work
-
-- Continue regression testing of controls, audio, display wake and Power behavior on Android 7.
+- Keep testing controls, audio, display wake and Power behavior on Android 7.
 - Investigate PC USB and OTG hub/flash-drive operation.
-- Complete the custom kernel's analog input path and perform hardware tests when authorized.
-- Prepare reproducible build instructions and a board-specific installation and recovery process.
+- Complete the custom kernel's analog input path before moving on to hardware tests.
+- Put together reproducible build instructions and a board-specific installation and recovery process.
 
-## Publication checks and provenance
+If you have matching hardware, board documentation or relevant driver knowledge, I'd welcome your findings. Please don't assume that sharing the same SoC makes another device compatible with this port.
 
-The project was developed with AI assistance and tested on the owner's device. See [NOTICE.md](NOTICE.md) for provenance and licensing status. No general project license has been selected, and no third-party firmware redistribution permission is implied.
+## Publication checks and attribution
 
-`PUBLICATION-MANIFEST.json` and `tools/check-publication.py` cover this reviewed repository snapshot, including the Android 7 reports and this README. Run `python3 tools/check-publication.py` before publishing changes. The checker validates the exact file set, UTF-8/JSON content, sizes and SHA256 hashes, and rejects extra files and symlinks. Local root `.git` metadata is excluded. The manifest is not signed, and the check does not guarantee legal clearance or detect every possible secret. New or changed files require review and a corresponding manifest update.
+I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON content, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
+
+Run it with:
+
+```sh
+python3 tools/check-publication.py
+```
+
+New or changed files need review and a corresponding manifest update. The manifest isn't signed, and the checker isn't a guarantee of legal clearance or a complete secret scan.
+
+See [NOTICE.md](NOTICE.md) for provenance and licensing status. I haven't selected a general project license yet. Nothing in this repository grants permission to redistribute third-party firmware.
 
 ## Related post
 
-[Owner's Reddit post](https://www.reddit.com/r/R36S/comments/1xomg76/comment/19s6oe904jeyt/)
+[My Reddit post](https://www.reddit.com/r/R36S/comments/1xomg76/comment/19s6oe904jeyt/)
