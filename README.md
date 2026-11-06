@@ -1,40 +1,72 @@
-# GA36 Android research
+# GA36 Android — Android 7.0 progress
 
-Experimental Android 5.0 bring-up on an R36S-style handheld with the **GA36-MB V1.2-20260416** board.
+Experimental Android bring-up for the **GA36-MB V1.2-20260416** R36S-style handheld. The project has progressed from Android 5.0 through Android 6 to **Android 7.0 Nougat / API 24**.
 
-This is a **source and documentation repository**, not a flashable firmware release. No stock firmware, Android system image, game ROM, SD-card image, private key or raw device log is included.
+Runtime analysis identifies the platform as **Allwinner A33 with 512 MB RAM**. Photographed chip markings differ from the runtime identification; donor model strings alone are not treated as hardware identification. Compatibility with other board revisions or A33 devices is not established.
 
-## Device and current status
+**This is a development repository, not a ready-to-flash firmware release. No stock firmware, Android images, game ROMs, card images or private keys are included.**
 
-Runtime analysis identifies an Allwinner A33 platform, 512 MB RAM and a vendor Linux 3.4.39 kernel. The photographed chips have Rockchip markings; Android donor model strings alone are not used as hardware identification. The donor system identifies as Android 5.0 / API 21.
+## Current status — 6 November 2026
 
-Confirmed by the device owner:
+| Component | Status |
+| --- | --- |
+| Current Android build | V41 running on the V38 direct-boot baseline; owner reports the currently used functions are working; existing vendor kernel retained |
+| Custom kernel | V39 compiled locally; not installed or boot-tested |
+| Recovery | Experimental TWRP development paused indefinitely at the owner's request; working device UI not confirmed |
+| PC USB / OTG hub and flash drive | Unresolved |
 
-- Android starts from a separate test SD card.
-- Installed apps launch and audio works.
-- Gamepad menu navigation works.
-- Right stick moves a mouse pointer; R1 clicks.
-- Display off and wake work.
-- Power-button operation works after the V19 kernel correction.
+Android 7 is the permanent boot target. Android 5 and 6 are no longer bootable systems on the test card; earlier states remain in local backups.
 
-Still pending: PC USB file transfer, USB hub/flash-drive operation and visual confirmation of launcher label layout. This has been tested on one board; compatibility with other revisions or A33 devices is not established.
+The owner reports that **V41 is running with the currently used functions working**. Development has established Android startup and apps, audio, gamepad navigation, right-stick mouse control with R1 click, display wake and Power-button operation. This is an initial device report, not an endurance test or a complete compatibility assessment. PC USB and OTG operation have not been separately confirmed.
 
-## Repository contents
+V41 includes a built-in speaker routing guard and a dark display handoff. It retains the known V38 boot baseline and existing vendor kernel; the custom V39 kernel is not installed.
 
-- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper, with self-test.
-- `src/lights-ga36.c`: experimental Android 5 ARM32 backlight HAL with delayed resume brightness restoration.
-- `src/test-kernel-branches.c`: ARM execution test for the Power-event suppression branch change; it does not access a real device.
-- `config/`: GA36-specific input mappings and device policy.
-- `docs/power-button.md`: exact-build Power-button findings.
-- `docs/usb-status.md`: confirmed USB observations and remaining questions.
-- `docs/discussion.md`: prepared GitHub Discussion text.
-- `tools/check-publication.py`: checks the exact publication file set and content hashes against the reviewed manifest.
+## Custom kernel V39
 
-These files are components of the experimental port, not a complete Android build tree or installer. The local boot helper, disk-writing tools and generated firmware are deliberately excluded.
+The separate local build passes static compatibility checks for five modules: `disp`, `mali`, `lcd`, `gpio-sunxi` and `udt_joystick`. All **377 versioned imports** match, with no CRC overrides.
 
-## Sources and attribution
+The analog input receive path is still open. Boot, graphics, controls, sound, wake and Power behavior have not been validated with this kernel. **V39 remains uninstalled.**
 
-The work was developed with AI assistance and tested on the owner's device. Android interface definitions follow AOSP; runtime observations and board-specific mappings come from analysis of this device. See `NOTICE.md` for provenance and the current licensing status. No license is granted for third-party firmware through this repository.
+## Recovery work
+
+A GA36-specific experimental TWRP build passed local ARM emulator self-tests, but a working recovery UI on the handheld has not been confirmed. Recovery development is paused indefinitely.
+
+The Android V38 startup path was restored and verified by direct readback after recovery testing.
+
+## Development reports
+
+The linked reports are earlier, dated development snapshots. They distinguish device-confirmed results from offline validation and pending hardware tests. They predate the latest V41 owner confirmation; this README records the newer status.
+
+- [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
+- [Android 7 status and evidence categories](docs/updates/2026-11-06/android7-status.json)
+- [Custom kernel V39 checks](docs/updates/2026-11-06/kernel-v39-checks.json)
+- [TWRP status](docs/updates/2026-11-06/twrp-status.json)
+- [Evidence index](docs/updates/2026-11-06/evidence-index.json)
+
+## Published source code
+
+The published implementation files currently cover the **earlier Android 5 bring-up**, not a complete Android 7 build:
+
+- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper.
+- `src/lights-ga36.c`: experimental Android 5 ARM32 backlight HAL.
+- `src/test-kernel-branches.c`: isolated ARM execution test for the Power-event suppression change.
+- `config/`: board-specific input mappings and device policy.
+- `docs/power-button.md` and `docs/usb-status.md`: earlier technical findings.
+
+The full Android 7, kernel and recovery implementations are not included. These components are not a complete installer or a generic port for other A33 devices.
+
+## Remaining work
+
+- Continue regression testing of controls, audio, display wake and Power behavior on Android 7.
+- Investigate PC USB and OTG hub/flash-drive operation.
+- Complete the custom kernel's analog input path and perform hardware tests when authorized.
+- Prepare reproducible build instructions and a board-specific installation and recovery process.
+
+## Publication checks and provenance
+
+The project was developed with AI assistance and tested on the owner's device. See [NOTICE.md](NOTICE.md) for provenance and licensing status. No general project license has been selected, and no third-party firmware redistribution permission is implied.
+
+`PUBLICATION-MANIFEST.json` and `tools/check-publication.py` describe the original Android 5 publication snapshot. They have not yet been updated for this revised README and the added Android 7 reports; the original checker will therefore flag these changes. It is not a complete audit of the current repository.
 
 ## Related post
 
