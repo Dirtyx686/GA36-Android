@@ -1,33 +1,133 @@
 #!/usr/bin/env python3
-"""Check the reviewed source/docs snapshot. This is not a legal clearance tool."""
-from pathlib import Path
-import hashlib,json,re,sys
-root=Path(__file__).resolve().parents[1]
-manifest=json.loads((root/'PUBLICATION-MANIFEST.json').read_text())
-expected={item['path']:item for item in manifest['files']}
-actual=set()
-errors=[]
-for p in root.rglob('*'):
- rel=p.relative_to(root).as_posix()
- if p.is_symlink():errors.append('Symlink is forbidden: '+rel);continue
- if p.is_dir():continue
- actual.add(rel)
- if rel=='PUBLICATION-MANIFEST.json':continue
- if rel not in expected:errors.append('Unreviewed file: '+rel);continue
- data=p.read_bytes()
- if len(data)>1024*1024 or b'\0' in data:errors.append('Binary/oversized file: '+rel);continue
- try:text=data.decode('utf-8')
- except UnicodeDecodeError:errors.append('Non-UTF8 file: '+rel);continue
- if hashlib.sha256(data).hexdigest()!=expected[rel]['sha256']:errors.append('Changed file: '+rel)
- if len(data)!=expected[rel]['bytes']:errors.append('Changed size: '+rel)
- if p.suffix.lower() not in {'.md','.txt','.c','.py','.kl','.idc'} and p.name!='.gitignore':errors.append('Unexpected file type: '+rel)
- if rel!='tools/check-publication.py':
-  patterns=[r'-----BEGIN [A-Z ]*PRIVATE KEY-----',r'github_pat_[A-Za-z0-9_]{20,}',r'gh[pousr]_[A-Za-z0-9]{20,}',r'AKIA[A-Z0-9]{16}',r'/home/test/',r'/run/user/',r'R3CTA0X201P',r'(?i)ro\.serialno\s*[=:]']
-  for pattern in patterns:
-   if re.search(pattern,text):errors.append('Potential private value: '+rel)
-for rel in sorted(set(expected)-actual):errors.append('Missing file: '+rel)
-if errors:
- print('\n'.join(errors));sys.exit(1)
-print(f'PASS: {len(expected)} reviewed text/source files; hashes match; no extra files or symlinks.')
-print('No firmware images, Android binaries, games, card images or private keys in this reviewed snapshot.')
-print('Re-run after changes. Git ignore rules alone do not prevent sensitive uploads.')
+"""Verify a reviewed publication snapshot; not a legal clearance or signature check."""
+from pathlib import Path, PurePosixPath
+import hashlib
+import json
+import os
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = 'PUBLICATION-MANIFEST.json'
+MAX_BYTES = 1024 * 1024
+ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json'}
+PATTERNS = [
+    r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
+    r'github_pat_[A-Za-z0-9_]{20,}',
+    r'gh[pousr]_[A-Za-z0-9]{20,}',
+    r'AKIA[A-Z0-9]{16}',
+    r'/home/[A-Za-z0-9._-]+/',
+    r'/run/user/[0-9]+/',
+    r'(?i)ro\.serialno\s*[=:]',
+]
+
+def inspect_text(path, rel, errors):
+    if path.stat().st_size > MAX_BYTES:
+        errors.append('Oversized file: ' + rel)
+        return None
+    data = path.read_bytes()
+    if b'\0' in data:
+        errors.append('Binary file: ' + rel)
+        return None
+    try:
+        text = data.decode('utf-8')
+    except UnicodeDecodeError:
+        errors.append('Non-UTF8 file: ' + rel)
+        return None
+    for pattern in PATTERNS:
+        if re.search(pattern, text):
+            errors.append('Potential private value: ' + rel)
+            break
+    if path.suffix == '.json':
+        try:
+            json.loads(text)
+        except (ValueError, RecursionError):
+            errors.append('Invalid JSON: ' + rel)
+    return data
+
+def check():
+    errors = []
+    manifest_path = ROOT / MANIFEST
+    if manifest_path.is_symlink() or not manifest_path.is_file():
+        return ['Manifest missing or symlinked']
+    raw = inspect_text(manifest_path, MANIFEST, errors)
+    if raw is None or errors:
+        return errors
+    try:
+        manifest = json.loads(raw)
+        if manifest.get('schema_version') != 2:
+            raise ValueError('Expected manifest schema version2')
+        entries = manifest['files']
+        if not isinstance(entries, list) or not entries:
+            raise ValueError('Expected nonempty file list')
+        expected = {}
+        for entry in entries:
+            rel = entry['path']
+            path = PurePosixPath(rel)
+            if (not isinstance(rel, str) or not rel or path.is_absolute()
+                    or '..' in path.parts or str(path) != rel
+                    or '\\' in rel or path.parts[0] == '.git'
+                    or rel == MANIFEST or rel in expected):
+                raise ValueError('Unsafe or duplicate manifest path')
+            if not re.fullmatch(r'[0-9a-f]{64}', entry['sha256']):
+                raise ValueError('Invalid SHA256')
+            if type(entry['bytes']) is not int or not 0 <= entry['bytes'] <= MAX_BYTES:
+                raise ValueError('Invalid file size')
+            expected[rel] = entry
+    except (ValueError, TypeError, KeyError, AttributeError, RecursionError) as exc:
+        return ['Invalid manifest: ' + str(exc)]
+
+    actual = set()
+    def walk_error(exc):
+        raise exc
+    for current, dirs, files in os.walk(ROOT, followlinks=False, onerror=walk_error):
+        directory = Path(current)
+        # Git metadata is local and is never part of a publication snapshot.
+        if directory == ROOT:
+            if '.git' in dirs and not (ROOT / '.git').is_symlink():
+                dirs.remove('.git')
+            files = [name for name in files if name != '.git' or (ROOT / name).is_symlink()]
+        for name in list(dirs):
+            child = directory / name
+            if child.is_symlink():
+                errors.append('Symlink is forbidden: ' + child.relative_to(ROOT).as_posix())
+                dirs.remove(name)
+        for name in files:
+            p = directory / name
+            rel = p.relative_to(ROOT).as_posix()
+            if p.is_symlink():
+                errors.append('Symlink is forbidden: ' + rel)
+                continue
+            if not p.is_file():
+                errors.append('Nonregular file: ' + rel)
+                continue
+            actual.add(rel)
+            if rel == MANIFEST:
+                continue
+            if rel not in expected:
+                errors.append('Unreviewed file: ' + rel)
+                continue
+            if p.suffix.lower() not in ALLOWED_SUFFIXES and rel != '.gitignore':
+                errors.append('Unexpected file type: ' + rel)
+            data = inspect_text(p, rel, errors)
+            if data is None:
+                continue
+            if len(data) != expected[rel]['bytes']:
+                errors.append('Changed size: ' + rel)
+            if hashlib.sha256(data).hexdigest() != expected[rel]['sha256']:
+                errors.append('Changed file: ' + rel)
+    for rel in sorted(set(expected) - actual):
+        errors.append('Missing file: ' + rel)
+    return errors
+
+if __name__ == '__main__':
+    try:
+        problems = check()
+    except (OSError, ValueError) as exc:
+        problems = ['Check failed: ' + str(exc)]
+    if problems:
+        print('\n'.join(problems))
+        sys.exit(1)
+    print('PASS: reviewed file set, UTF8/JSON, sizes and SHA256 match; no unreviewed files or symlinks.')
+    print('Local root .git metadata excluded. Gitignore rules do not authorize extra files.')
+    print('The manifest is not signed; this check is not a legal or exhaustive secret-scan guarantee.')

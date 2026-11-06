@@ -1,5 +1,12 @@
 {
-  "scope": "Reviewed source and documentation only",
+  "schema_version": 2,
+  "review_date": "2026-11-06",
+  "scope": "Reviewed text/source/docs snapshot including Android7 status reports; no firmware or game images.",
+  "base_commit": "9216b173ea77edf695b8b2e4cb090c467503066f",
+  "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
+  "ignored_local_metadata": [
+    ".git (repository root only)"
+  ],
   "files": [
     {
       "path": ".gitignore",
@@ -18,8 +25,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2538,
-      "sha256": "382fb9074f40d6e9bd228216fc23af511513c76acedcfb351c4ccb2f83c3bc6d"
+      "bytes": 5239,
+      "sha256": "b981df7d1389824c2d30fd6b37fb669ff326508f7417ac7910e3f4496025a3c1"
     },
     {
       "path": "config/idc/GA36_UI_Pointer.idc",
@@ -72,6 +79,41 @@
       "sha256": "95438c71c2b52296bff1d80b658bbb35afc22c3ed50c8f04a1f2df1f7582cc00"
     },
     {
+      "path": "docs/updates/2026-11-06/README.md",
+      "bytes": 888,
+      "sha256": "b23e634899697ef1aad69f1fb1a0abbb9d0143a40f56b3299a8564328877b6b6"
+    },
+    {
+      "path": "docs/updates/2026-11-06/android7-status.json",
+      "bytes": 2260,
+      "sha256": "ffaea601e862c7c49960d11bff092990c0371b9476d3fc5cd4844b54a0303182"
+    },
+    {
+      "path": "docs/updates/2026-11-06/evidence-index.json",
+      "bytes": 2187,
+      "sha256": "51150642ab35a754e3f357041f1f4a8c74c7e7a1e4ed15d3ecd957680d4cd5f4"
+    },
+    {
+      "path": "docs/updates/2026-11-06/kernel-v39-checks.json",
+      "bytes": 2296,
+      "sha256": "53c4821e203ecc5a25d396154f326202975a2eacf0baba6bc485d740fa423e4b"
+    },
+    {
+      "path": "docs/updates/2026-11-06/progress-update.md",
+      "bytes": 3045,
+      "sha256": "405d5396753ef61b7166b325e1831d2168ccd580e5ee3a9240c3ca13513b6ab4"
+    },
+    {
+      "path": "docs/updates/2026-11-06/twrp-status.json",
+      "bytes": 1203,
+      "sha256": "93d6ae9915ba58aba5cf6da0b50d5230219f6a8f409a59332abbf099e65de928"
+    },
+    {
+      "path": "docs/updates/2026-11-06/v40-optimization-checks.json",
+      "bytes": 815,
+      "sha256": "37a9c9facab015f76019c02cada42f8ada9ecb14b5e7881821c749a2dbb77403"
+    },
+    {
       "path": "docs/usb-status.md",
       "bytes": 1276,
       "sha256": "1b60b56e1117b8172c09d2a066fa6ed28d77b43ffe6f7c8b2569dd3016151bf4"
@@ -93,8 +135,8 @@
     },
     {
       "path": "tools/check-publication.py",
-      "bytes": 1941,
-      "sha256": "ef612d6a17e31449119f351681975c91d1c9a8b7284ade342d0c97fc29ec9c03"
+      "bytes": 5228,
+      "sha256": "416515d3fe9b2f5ab5de57133f1858e2dc19ea2242261d2e607dc9d29e179ef6"
     }
   ]
 }

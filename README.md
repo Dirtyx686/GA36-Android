@@ -66,7 +66,7 @@ The full Android 7, kernel and recovery implementations are not included. These 
 
 The project was developed with AI assistance and tested on the owner's device. See [NOTICE.md](NOTICE.md) for provenance and licensing status. No general project license has been selected, and no third-party firmware redistribution permission is implied.
 
-`PUBLICATION-MANIFEST.json` and `tools/check-publication.py` describe the original Android 5 publication snapshot. They have not yet been updated for this revised README and the added Android 7 reports; the original checker will therefore flag these changes. It is not a complete audit of the current repository.
+`PUBLICATION-MANIFEST.json` and `tools/check-publication.py` cover this reviewed repository snapshot, including the Android 7 reports and this README. Run `python3 tools/check-publication.py` before publishing changes. The checker validates the exact file set, UTF-8/JSON content, sizes and SHA256 hashes, and rejects extra files and symlinks. Local root `.git` metadata is excluded. The manifest is not signed, and the check does not guarantee legal clearance or detect every possible secret. New or changed files require review and a corresponding manifest update.
 
 ## Related post
 
