@@ -1,0 +1,22 @@
+{
+  "version": "V40",
+  "installed_on": "V38 direct boot with vendor kernel",
+  "source_root_exactly_v34": true,
+  "own_kernel_v39_not_installed": true,
+  "shell_syntax": "passed",
+  "filesystem_check": "passed",
+  "archive_readback": "passed",
+  "disabled_packages": [
+    "com.android.messaging",
+    "com.android.printspooler",
+    "com.android.printservice.recommendation",
+    "com.android.dreams.basic",
+    "com.android.wallpaper.livepicker",
+    "jp.co.omronsoft.openwnn",
+    "com.android.emulator.smoketests",
+    "com.android.cts.ctsshim",
+    "com.android.protips"
+  ],
+  "performance_comparison": "pending physical test; no measured improvement claimed",
+  "note": "Package names describe the intended optimization. The report is not an on-device verification that each disable operation succeeded."
+}

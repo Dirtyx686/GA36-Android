@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-06",
+  "method": "Selected fields transcribed from local reports; source hashes recorded for provenance. No raw logs or binary artifacts copied. These records do not independently prove hardware success.",
+  "sources": [
+    {
+      "reference": "current-target.json",
+      "context": "ga36-porting",
+      "sha256": "ec3d6c2918008fca5ad2e662907514fb126d92bbb17039de34e77edc825c1a47"
+    },
+    {
+      "reference": "install-report.json",
+      "context": "ga36-android7-direct-v38",
+      "sha256": "bf34fa0868964cf2e3ff46c3985416c3197241b1628653c82d2c8f111c19061e"
+    },
+    {
+      "reference": "install-report.json",
+      "context": "ga36-android7-optimize-v40",
+      "sha256": "c7e6ddaa65c842b054f890e1f40b2403d4ac0be5b75e1154c9b7818669a05d16"
+    },
+    {
+      "reference": "validation.json",
+      "context": "ga36-android7-optimize-v40",
+      "sha256": "2f408b0636626cd41f27f0025b1e621b401088311cdb1b170f474071ae2d1990"
+    },
+    {
+      "reference": "Pruefstand.json",
+      "context": "V39-Entwicklungsstand",
+      "sha256": "9531192e96aa72f786759348a78e6f45bb6764b98bf7d4eee8d82ba7039cde50"
+    },
+    {
+      "reference": "module-abi-report.json",
+      "context": "V39-Entwicklungsstand",
+      "sha256": "f9b8f46a04696d66303b097aa7d7e1850da70f932bb20e4099a2d1ae2310efb1"
+    },
+    {
+      "reference": "config-changes.json",
+      "context": "V39-Entwicklungsstand",
+      "sha256": "6e0721a85b4e6750240544997ad007010e84ca50087a1e439bcdf138881a9ac1"
+    },
+    {
+      "reference": "build-report.json",
+      "context": "logs",
+      "sha256": "fe25ee13b4638eea053e5164a0dbcb639fcce4c1714c0a07e545140a0068496f"
+    },
+    {
+      "reference": "restore-android7-install-report.json",
+      "context": "logs",
+      "sha256": "14c17669c15e005490bed2dbbd15d32530f301f8007e34b508094ec6fd9ab602"
+    },
+    {
+      "reference": "test05-return-findings.json",
+      "context": "logs",
+      "sha256": "5619f9f750ab4b510bdf435051fa527a72d352d84eae791d279e3d2fb9429f83"
+    }
+  ],
+  "source_priority": "Latest installation report and explicit user-observation records take precedence over stale fields or earlier offline-only validation summaries."
+}

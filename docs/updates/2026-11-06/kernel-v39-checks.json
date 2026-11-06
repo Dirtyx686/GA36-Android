@@ -1,0 +1,71 @@
+{
+  "status": "Local development build and paired boot/payload prepared; NOT installed or boot-tested",
+  "installed": false,
+  "hardware_ready": false,
+  "hardware_tests": "pending; analog receive path not established",
+  "modules": {
+    "disp": {
+      "matching": 116,
+      "mismatches": [],
+      "missing": [],
+      "unversioned_imports": [],
+      "compatible": true,
+      "vermagic": "3.4.39 SMP preempt mod_unload modversions ARMv7 p2v8 "
+    },
+    "mali": {
+      "matching": 151,
+      "mismatches": [],
+      "missing": [],
+      "unversioned_imports": [],
+      "compatible": true,
+      "vermagic": "3.4.39 SMP preempt mod_unload modversions ARMv7 p2v8 "
+    },
+    "lcd": {
+      "matching": 28,
+      "mismatches": [],
+      "missing": [],
+      "unversioned_imports": [],
+      "compatible": true,
+      "vermagic": "3.4.39 SMP preempt mod_unload modversions ARMv7 p2v8 "
+    },
+    "gpio-sunxi": {
+      "matching": 40,
+      "mismatches": [],
+      "missing": [],
+      "unversioned_imports": [],
+      "compatible": true,
+      "vermagic": "3.4.39 SMP preempt mod_unload modversions ARMv7 p2v8 "
+    },
+    "udt_joystick": {
+      "matching": 42,
+      "mismatches": [],
+      "missing": [],
+      "unversioned_imports": [],
+      "compatible": true,
+      "vermagic": "3.4.39 SMP preempt mod_unload modversions ARMv7 p2v8 "
+    }
+  },
+  "matching_versioned_imports_total": 377,
+  "crc_overrides": false,
+  "build_configuration": {
+    "cpu_tune": "cortex-a7",
+    "changes": {
+      "CONFIG_DEFAULT_CFQ": "n",
+      "CONFIG_DEFAULT_DEADLINE": "y",
+      "CONFIG_DEFAULT_IOSCHED": "\"deadline\"",
+      "CONFIG_CMA_SIZE_MBYTES": "32"
+    },
+    "preserved": [
+      "4 CPU SMP",
+      "PREEMPT",
+      "HZ100 (exact 10/20ms gamepad poll intervals)",
+      "module version checks",
+      "stock LCD panel and GPIO/controller modules"
+    ],
+    "board_exports": "Exact DWARF types, no CRC overrides; analog feed pending hardware inspection"
+  },
+  "kernel_sha256": "b987550fe158a0aa5b584ae9e72071e7c19096e269d937faa2fcffb16657fb12",
+  "boot_sha256": "7f2041521ef41daa1fc9d036e50f51575acec6d3929c53032a5bf6ec73079e66",
+  "performance_improvement_measured": false,
+  "distribution": "Metadata only. No kernel image, vendor module, ramdisk or full source archive included."
+}

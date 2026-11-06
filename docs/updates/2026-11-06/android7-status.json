@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-06",
+  "board": "GA36-MB V1.2-20260416",
+  "runtime_platform": "Allwinner A33",
+  "ram_mib": 512,
+  "android_version": "7.0",
+  "api_level": 24,
+  "architecture": "ARM32",
+  "confirmed_boot_baseline": {
+    "version": "V38",
+    "user_confirmed": true,
+    "observation": "android 7 l\u00e4uft jetzt",
+    "kernel": "Existing vendor kernel with earlier project modifications; custom V39 kernel not installed",
+    "emuelec_system_loaded": false,
+    "boot_image_sha256": "6f616755e3cc7f9eaf25875430bf922065e12c171197b1a51a3001bab1f09394",
+    "boot_partition_sha256": "8fe5c7be2bb952c2cd6aa0f772c97656d6c901705b4c974511b2d8334f6fa725",
+    "controls_audio_separately_retested_on_v38": false
+  },
+  "latest_installed_update": {
+    "version": "V40",
+    "scope": "Userspace/startup optimizations on V38 direct boot",
+    "direct_readback_verified": true,
+    "permanent_android7": true,
+    "kernel_changed": false,
+    "android_system_userdata_written": false,
+    "physical_test": "pending",
+    "measured_performance_gain": null
+  },
+  "previous_android_versions": "Removed from card as bootable systems; recoverable through complete desktop image",
+  "audio": {
+    "version": "V33",
+    "user_confirmation": "User confirms sound works",
+    "separate_v38_v40_retest": "not established by the selected reports"
+  },
+  "historical_controls": {
+    "gamepad_menu_navigation": "confirmed in earlier development",
+    "right_stick_R1_mouse": "confirmed in earlier development",
+    "display_off_wake": "confirmed in earlier development",
+    "power_button": "confirmed after V19",
+    "current_regression_test": "required; historical confirmation is not proof of every later build"
+  },
+  "usb": {
+    "pc_enumeration": "unresolved",
+    "recorded_error": -71,
+    "cold_FEL_test_without_battery_or_SD": "failure also reported",
+    "hub_flash_drive": "unconfirmed",
+    "diagnosis": "Electrical path, cable/adapter and board behavior remain under investigation; connector damage not proven"
+  },
+  "layout": {
+    "capacity_bytes": 63909658624,
+    "system_offset": 2147483648,
+    "system_limit": 536870912,
+    "data_offset": 3221225472,
+    "data_limit": 60671655936,
+    "data_gib": 56.5,
+    "android5_android6_bootable": false
+  }
+}
