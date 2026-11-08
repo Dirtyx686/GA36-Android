@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-08",
-  "scope": "Reviewed source and documentation including curated V65 status; no firmware, foreign binaries, games or private logs.",
-  "base_commit": "b132f366a5b808a9a9f7fa361891975a4a6e9a7d",
+  "scope": "Reviewed source and documentation with an additional documentation-only source/validation update; no firmware, binaries, games or private logs.",
+  "base_commit": "4e2e06908b27b9fc87d8584f7f8f65b27c386e14",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -15,18 +15,18 @@
     },
     {
       "path": "NOTICE.md",
-      "bytes": 1604,
-      "sha256": "510cffb5d63846bb19ec0b16dc9e0afccd5d31e3f8d575cd645a7ed466ab0ec8"
+      "bytes": 1791,
+      "sha256": "3d8bee2b37a7d1a845aeb35c1e6924a4ec7570b6ce4b33fa2b06c14aaee59f10"
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 1177,
-      "sha256": "362d3b2f3f6dc3201474d6e78aec1c9b6c4b6475403a6111d8228a8fca5ec514"
+      "bytes": 1258,
+      "sha256": "7d2253d253d06a2cc90ec15e894ed0e713bb7578ad833a8b9c033309b4d49d76"
     },
     {
       "path": "README.md",
-      "bytes": 7158,
-      "sha256": "bd649b5e542ed0ebccca4d2583fd2d2843af733f0faf3fe29e43a3ae3e91a2c4"
+      "bytes": 8067,
+      "sha256": "3dfc3f8278108208227448e75d944c0002d59c8bc3c35fc4c393e4721ad4e875"
     },
     {
       "path": "config/idc/GA36_UI_Pointer.idc",
@@ -80,8 +80,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 4138,
-      "sha256": "9f8400a868a3bf4fa12e18c2974bd4154916c873388ea70ebf6c3fbb3f772d59"
+      "bytes": 5168,
+      "sha256": "86528fd5272fd7ac4aac86d090a3127591edc6a0fa5093e0ed02f41beeba8689"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -122,6 +122,11 @@
       "path": "docs/updates/2026-11-08/progress-update.md",
       "bytes": 2702,
       "sha256": "44b01aad118fba6d971c4677d2a412c144e0e204959143b59ba80ec2287d9a13"
+    },
+    {
+      "path": "docs/updates/2026-11-08/source-and-validation-update.md",
+      "bytes": 4597,
+      "sha256": "309aae3a0deede46727c7aa3edecca9dd4bf3416db2a65ed912acf37c93af513"
     },
     {
       "path": "docs/updates/2026-11-08/status.json",

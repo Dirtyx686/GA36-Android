@@ -8,4 +8,4 @@ Excluded: stock-ROM contents and images, Android donor binaries, game ROMs, all 
 
 The selected files were reviewed as text. The manifest records each file's SHA256. The checker rejects additions and modifications against that manifest; updating the manifest requires a new human review. This is a technical content check, not a legal guarantee or a cryptographically signed release.
 
-No third-party firmware redistribution permission is implied. No general project license has yet been selected. See NOTICE.md. Nothing has been uploaded as part of preparing this folder.
+No third-party firmware redistribution permission is implied. MIT has been selected for original project-owned code; the scoped license package remains separate from this documentation update. See NOTICE.md. Nothing has been uploaded as part of preparing this folder.

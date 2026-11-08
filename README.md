@@ -12,7 +12,9 @@ So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm
 
 ## Where the project stands
 
-**As of 8 November 2026, V65 is my latest local Android 7 build.** I have written it to my test card and verified the written contents by direct readback. **The physical V65 device test is still pending.** My V56 cold start was confirmed on the handheld; that is a separate, earlier result.
+**As of 8 November 2026, V65 is my latest local Android 7 build.** I have written it to my test card and verified the written contents by direct readback. **A complete V65 regression test is still pending.** My V56 cold start was confirmed on the handheld; that is a separate, earlier result.
+
+On 8 November I confirmed that **both sticks, centre positions, full travel and reliable analog input after a cold start work on the version currently on my card**. This does not validate the separate source-built kernel or every V65 change.
 
 Earlier device testing established:
 
@@ -31,13 +33,15 @@ V65 adds launcher layout/theme options and an X+Y background-app cleanup action.
 
 See the [latest progress report](docs/updates/2026-11-08/progress-update.md) for the test boundaries.
 
-## My custom kernel work
+## Kernel work — local only
 
-I've compiled a separate **V39 development kernel** locally. Static compatibility checks pass for five modules: `disp`, `mali`, `lcd`, `gpio-sunxi` and `udt_joystick`. All **377 versioned imports** match, without CRC overrides.
+A separate source-built kernel and a bounded UART1 analog receive candidate now compile and pass offline checks. I have also built a GPL source candidate for `gpio-sunxi`; it is not yet device-tested. Matching sources or complete replacements for the other vendor modules remain open.
 
-That doesn't mean the kernel works on the handheld yet. The analog input receive path is still open, and I haven't tested boot, graphics, controls, audio, wake or Power behavior with this kernel.
+**I have not installed or device-tested this kernel. Kernel source and build files remain outside this publication for now.** Working controls on my current vendor-kernel card are a separate result.
 
-**V39 has not been installed on the SD card.** I also haven't measured a performance improvement.
+## BusyBox preparation — local only
+
+I have built a static ARM BusyBox 1.36.1 replacement, including compatibility with the older `timeout -t` calls used by my helpers. **17 ARM-emulation checks passed**, and the saved build recipe also produced a second working local build. Sources, configuration, changes and license notices are prepared locally. Device integration is still pending; this is not a promise of compatibility with every command in the older BusyBox.
 
 ## Recovery experiments
 
@@ -63,7 +67,8 @@ I've added Android 7 progress reports and selected validation metadata. The full
 
 These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. Older reports describe historical builds and must not be read as current device acceptance.
 
-- [Latest V65 progress and pending tests](docs/updates/2026-11-08/progress-update.md)
+- [Latest source, validation and release-status update](docs/updates/2026-11-08/source-and-validation-update.md)
+- [Earlier V65 progress and pending tests](docs/updates/2026-11-08/progress-update.md)
 - [Current curated status](docs/updates/2026-11-08/status.json)
 - [Image release readiness and third-party software](docs/release-readiness.md)
 - [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
@@ -74,7 +79,7 @@ These are dated snapshots of the work. They distinguish device-confirmed results
 
 ## Planned public test release
 
-I plan to use my **own source-built kernel** for the public Android 7 test image. The custom kernel still needs analog-input work and hardware validation; the current vendor-kernel build is a development baseline. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
+I plan to use my **own source-built kernel** for the public Android 7 test image. The analog receive candidate still needs hardware validation; the current vendor-kernel build is a development baseline. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
 
 The [release roadmap](docs/release-readiness.md) covers kernel validation, Android integration, source/license preparation, a clean image, testing on another card and an experimental GitHub pre-release. No public image is available yet.
 
@@ -82,7 +87,7 @@ The [release roadmap](docs/release-readiness.md) covers kernel validation, Andro
 
 - Keep testing controls, audio, display wake and Power behavior on Android 7.
 - Investigate PC USB and OTG hub/flash-drive operation.
-- Complete the custom kernel's analog input path before moving on to hardware tests.
+- Validate the local analog receive candidate and source-built module candidates on hardware before accepting the custom kernel.
 - Put together reproducible build instructions and a board-specific installation and recovery process.
 
 If you have matching hardware, board documentation or relevant driver knowledge, I'd welcome your findings. Please don't assume that sharing the same SoC makes another device compatible with this port.
@@ -99,7 +104,7 @@ python3 tools/check-publication.py
 
 New or changed files need review and a corresponding manifest update. The manifest isn't signed, and the checker isn't a guarantee of legal clearance or a complete secret scan.
 
-See [NOTICE.md](NOTICE.md) for provenance and licensing status. I haven't selected a general project license yet. Nothing in this repository grants permission to redistribute third-party firmware.
+See [NOTICE.md](NOTICE.md) for provenance and licensing status. I have selected MIT for my own original code; the scoped license package is separate from this documentation update. This does not relicense imported files or grant permission to redistribute third-party firmware.
 
 ## Related post
 

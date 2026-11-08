@@ -9,6 +9,6 @@ The pointer helper and backlight implementation were written during this project
 
 The keylayout/IDC files are GA36-specific mappings and settings. Power documentation describes observations and a change specific to the exact local vendor kernel, without bundling that kernel.
 
-No general project LICENSE has been selected by the owner yet. Do not describe this as an MIT-, GPL- or Apache-licensed complete ROM. The absence of a project license also means readers should not assume an unrestricted reuse grant. Public source availability and permission to redistribute someone else's firmware are separate matters.
+The owner has selected MIT for original project-owned code. The scoped license package remains separate from this documentation update; existing file-level notices still apply, and this announcement is not a blanket relicensing of mixed-provenance files. Do not describe this as an MIT-, GPL- or Apache-licensed complete ROM. Readers should not infer an unrestricted reuse grant for every file or third-party component. Public source availability and permission to redistribute someone else's firmware are separate matters.
 
 This file records the publication scope and provenance; it is not a guarantee of worldwide legal clearance. A complete flashable image is excluded until its individual components and redistribution terms have been reviewed.
