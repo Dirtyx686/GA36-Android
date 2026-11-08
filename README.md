@@ -34,32 +34,31 @@ So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm
 
 ## Where the project stands
 
-**As of 8 November 2026, V65 is my latest local Android 7 build.** I have written it to my test card and verified the written contents by direct readback. **A complete V65 regression test is still pending.** My V56 cold start was confirmed on the handheld; that is a separate, earlier result.
+**Updated 8 November 2026: V69 is the latest installed Android 7 development build confirmed running. It now uses my source-built D03 Linux 3.4.39 kernel (#70). V70 wake/display work is in preparation; it is not an accepted release.**
 
-On 8 November I confirmed that **both sticks, centre positions, full travel and reliable analog input after a cold start work on the version currently on my card**. This does not validate the separate source-built kernel or every V65 change.
+V69 was installed and checked by direct readback. I reported that it boots and runs; fresh device logs separately confirm the D03 kernel identity and the native system-selection menu before Android starts. This supersedes the earlier V65/vendor-kernel development status below in dated reports.
 
-Earlier device testing established:
+The native menu offers Android 7 and a **locked Android 11 placeholder**. Real input events and an Android 7 selection were recorded before Android init. Android 7 is the configured default after five seconds; navigation pauses the countdown. **Android 11 has not been built as a complete system or booted.** This is not a working Android 7/11 dual-boot release.
 
-- Android startup and apps
-- Audio
-- Gamepad menu navigation
-- Right-stick mouse control with R1 click
-- Display off and wake
-- Power-button operation
+<img src="assets/illustrations/system-selection.jpg" alt="Illustration of the GA36 system-selection menu with Android 7 enabled and Android 11 locked" width="360">
 
-V65 retains the previously working native audio, wake, Power and graphics files. This does not replace regression testing of the new build. **PC USB connectivity, OTG hub/flash-drive support and secondary-SD operation remain unconfirmed.** USB investigation is currently deferred.
+*User-supplied menu illustration. Runtime confirmation comes from device logs; this image does not establish that Android 11 works. The menu currently uses German labels; this README is maintained in English for international readers.*
 
-Android 7 is my permanent boot target, using the **V38 direct-start baseline and vendor Linux 3.4.39 #522**, with the existing patches. Android 5 and 6 are no longer bootable systems on the test card; I have kept earlier states in local backups.
+Earlier testing confirmed Android/apps, audio, gamepad navigation, both sticks, right-stick mouse with R1 click and Power-button operation on the earlier development baseline. Those results are historical; I still distinguish them from complete per-feature acceptance of the new kernel and startup path.
 
-V65 adds launcher layout/theme options and an X+Y background-app cleanup action. Local behavior tests pass, but actual controller delivery and first-boot maintenance still need device testing. I removed overlapping automatic installation/compilation work; I have not measured a V65 performance improvement or boot-time reduction.
+**Known current issue:** waking after Power can intermittently leave the display black and require a reset. V70 preparation addresses the wake/display path and the repeated logo/dark-handoff sequence. Earlier successful wake tests are not a claim that this regression is fixed.
 
-See the [latest progress report](docs/updates/2026-11-08/progress-update.md) for the test boundaries.
+Device startup logs show **256 MiB zRAM and a 4 GiB SD swap file active**, with priorities 100 and 10. Both were unused in the captured snapshots; runtime load/performance testing is still needed. Physical RAM remains 512 MiB.
 
-## Kernel work — local only
+**PC USB, OTG hub/flash-drive support and secondary-SD operation remain unconfirmed.** USB investigation is deferred. Android 5 and 6 remain earlier development stages, with backups kept locally.
 
-A separate source-built kernel and a bounded UART1 analog receive candidate now compile and pass offline checks. I have also built a GPL source candidate for `gpio-sunxi`; it is not yet device-tested. Matching sources or complete replacements for the other vendor modules remain open.
+See the [latest V69/D03 progress report](docs/updates/2026-11-08/v69-d03-status.md) and [current status summary](docs/updates/2026-11-08/latest-status.json). Full cold-start/restart, audio, controls and suspend/wake regression acceptance remains open.
 
-**I have not installed or device-tested this kernel. Kernel source and build files remain outside this publication for now.** Working controls on my current vendor-kernel card are a separate result.
+## Own kernel — D03 running, sources kept local for now
+
+D03 (#70) is installed and its identity is confirmed by device logs. It incorporates the diagnostic work on the vendor partition layout, audio machine-driver integration and the analog UART receive path. Static checks cover 377 versioned imports across five board modules, without CRC overrides; some vendor modules are still retained for local testing.
+
+Boot success does not complete graphics, audio, analog-control or suspend/wake validation. Kernel source archives and build packages remain outside this GitHub publication for now; source/rights work for retained components is still open.
 
 ## BusyBox preparation — local only
 
@@ -69,7 +68,7 @@ I have built a static ARM BusyBox 1.36.1 replacement, including compatibility wi
 
 I've also worked on an experimental TWRP build and a GA36-specific recovery configuration. Local ARM emulator self-tests passed, but I haven't confirmed a working recovery UI on the device.
 
-I've **paused TWRP development indefinitely** for now. After the recovery tests, I restored the V38 Android startup path and verified it by direct card readback. My current Android build runs on that boot baseline.
+I've **paused TWRP development indefinitely** for now. After the recovery tests, I restored the V38 Android startup path and verified it by direct card readback. The V38 direct-start layout is historical context; the current V69 test uses the D03 kernel and native pre-Android menu.
 
 ## What you'll find here
 
@@ -89,9 +88,11 @@ I've added Android 7 progress reports and selected validation metadata. The full
 
 These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. Older reports describe historical builds and must not be read as current device acceptance.
 
-- [Latest source, validation and release-status update](docs/updates/2026-11-08/source-and-validation-update.md)
+- [Latest V69/D03 startup, memory and Android 11 preparation update](docs/updates/2026-11-08/v69-d03-status.md)
+- [Current status summary](docs/updates/2026-11-08/latest-status.json)
+- [Earlier source, validation and release-status update](docs/updates/2026-11-08/source-and-validation-update.md)
 - [Earlier V65 progress and pending tests](docs/updates/2026-11-08/progress-update.md)
-- [Current curated status](docs/updates/2026-11-08/status.json)
+- [Earlier V65 curated status](docs/updates/2026-11-08/status.json)
 - [Image release readiness and third-party software](docs/release-readiness.md)
 - [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
 - [Android 7 status and evidence categories](docs/updates/2026-11-06/android7-status.json)
@@ -101,22 +102,22 @@ These are dated snapshots of the work. They distinguish device-confirmed results
 
 ## Planned public test release
 
-I plan to use my **own source-built kernel** for the public Android 7 test image. The analog receive candidate still needs hardware validation; the current vendor-kernel build is a development baseline. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
+I plan to use my **own source-built kernel** for the public Android 7 test image. D03 has now booted on the handheld, but full hardware acceptance and the retained-component source/license work remain open. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
 
 The [release roadmap](docs/release-readiness.md) covers kernel validation, Android integration, source/license preparation, a clean image, testing on another card and an experimental GitHub pre-release. No public image is available yet.
 
 ## What I want to work on next
 
-- Keep testing controls, audio, display wake and Power behavior on Android 7.
+- Resolve the intermittent black-screen wake issue and validate controls, audio, display and Power on the D03/V69 baseline.
 - Investigate PC USB and OTG hub/flash-drive operation.
-- Validate the local analog receive candidate and source-built module candidates on hardware before accepting the custom kernel.
+- Finish full device regression tests and source/license preparation for the custom-kernel integration.
 - Put together reproducible build instructions and a board-specific installation and recovery process.
 
 If you have matching hardware, board documentation or relevant driver knowledge, I'd welcome your findings. Please don't assume that sharing the same SoC makes another device compatible with this port.
 
 ## Publication checks and attribution
 
-I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON text, explicitly reviewed JPEG photos, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
+I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON text, explicitly reviewed JPEG photos/illustrations, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
 
 Run it with:
 

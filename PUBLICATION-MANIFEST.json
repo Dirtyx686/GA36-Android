@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-08",
-  "scope": "Reviewed source/documentation plus four explicitly reviewed device/board photographs; no firmware, executable binaries, games or private logs.",
-  "base_commit": "3a0685b6be216b3e0090d07731ee0a0f13bea111",
+  "scope": "Reviewed source/documentation, curated V69/D03 status, four device/board photos and one labelled menu illustration; no firmware, executable binaries, games or raw logs.",
+  "base_commit": "5623bcfa1106708b1f9411399f5ce75241718fa2",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -15,18 +15,23 @@
     },
     {
       "path": "NOTICE.md",
-      "bytes": 2228,
-      "sha256": "2ab5f4f859a8b2e5aa146fb0792ec4ba852be9512617770fa552c8932deb8898"
+      "bytes": 2528,
+      "sha256": "9cb39be0efffe4a16dd85969f768e95e7304cb7a050a75e4a0f09faf8517255c"
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 1343,
-      "sha256": "b02e8620fcc367a1686df7a9276300a30c29265c15bf32c749c66dc10aefe6d8"
+      "bytes": 1389,
+      "sha256": "879863ffb6828a3996f5f248653f4f2b49dc96e3cd410ea0c0ec755cdfb21b22"
     },
     {
       "path": "README.md",
-      "bytes": 9265,
-      "sha256": "eed668c06577fad9cd69483c0e6f7510a12fd5375a839319dc9f0def8acaad81"
+      "bytes": 10568,
+      "sha256": "c0557aa8e43b17fc80bb0779dbd412d30c9142baec3fe900ac3ea23eff86d9b6"
+    },
+    {
+      "path": "assets/illustrations/system-selection.jpg",
+      "bytes": 156886,
+      "sha256": "56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1"
     },
     {
       "path": "assets/photos/android7-device.jpg",
@@ -100,8 +105,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 5168,
-      "sha256": "86528fd5272fd7ac4aac86d090a3127591edc6a0fa5093e0ed02f41beeba8689"
+      "bytes": 5343,
+      "sha256": "e23aceddf8b6c1c01b7883b2c46a46edb930c58962464d082faa8f3071c5eb26"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -139,6 +144,11 @@
       "sha256": "37a9c9facab015f76019c02cada42f8ada9ecb14b5e7881821c749a2dbb77403"
     },
     {
+      "path": "docs/updates/2026-11-08/latest-status.json",
+      "bytes": 1740,
+      "sha256": "853e565a3b47141800804d3eb0129f6a69b356295343ef157a0f853fddef1b30"
+    },
+    {
       "path": "docs/updates/2026-11-08/progress-update.md",
       "bytes": 2702,
       "sha256": "44b01aad118fba6d971c4677d2a412c144e0e204959143b59ba80ec2287d9a13"
@@ -152,6 +162,11 @@
       "path": "docs/updates/2026-11-08/status.json",
       "bytes": 2131,
       "sha256": "319c29c21733fb7c7a56b7b69929811a0b4e0e473e6d0bfa521e5dfd2d776a48"
+    },
+    {
+      "path": "docs/updates/2026-11-08/v69-d03-status.md",
+      "bytes": 4386,
+      "sha256": "c32127eb6c8ca083a34d239babc30ad7b1f665dcf67ae4817aedb7efa64cc262"
     },
     {
       "path": "docs/usb-status.md",
@@ -175,8 +190,8 @@
     },
     {
       "path": "tools/check-publication.py",
-      "bytes": 6428,
-      "sha256": "5f976a4457641d7f25870b61dde9683fb5280a231554cb1f2016c0090deadd14"
+      "bytes": 6547,
+      "sha256": "43f209d961715613d6d9e422e8a5fbb78685116c8afe76ddf42a7ae162b12b89"
     }
   ]
 }

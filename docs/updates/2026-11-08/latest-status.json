@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-08",
+  "board": "GA36-MB V1.2-20260416",
+  "runtime_platform": "Allwinner A33",
+  "physical_ram_MiB": 512,
+  "installed_android": "7.0 / API 24",
+  "installed_development_build": "V69",
+  "kernel": {
+    "name": "D03",
+    "release": "3.4.39",
+    "build": 70,
+    "installed_and_readback_verified": true,
+    "runtime_identity_confirmed": true,
+    "full_hardware_acceptance": false,
+    "publication": "kernel source/build packages remain local"
+  },
+  "startup_menu": {
+    "stage": "native framebuffer/evdev before Android init",
+    "device_navigation_and_android7_selection_logged": true,
+    "android7_default_seconds_configured": 5,
+    "automatic_timing_acceptance": false,
+    "android11_locked": true
+  },
+  "memory": {
+    "zram_MiB": 256,
+    "zram_priority": 100,
+    "sd_swap_GiB": 4,
+    "sd_swap_priority": 10,
+    "both_active_in_device_startup_logs": true,
+    "used_at_recorded_snapshots": 0,
+    "runtime_performance_benchmark": false
+  },
+  "v70": {
+    "stage": "preparing",
+    "installed_confirmed": false,
+    "device_acceptance": false,
+    "work": [
+      "intermittent black-screen wake",
+      "extra native-logo preview / dark handoff"
+    ]
+  },
+  "android11": {
+    "target": "LineageOS 18.1 / ARM32",
+    "local_device_vendor_and_kernel_preparation": true,
+    "full_system_build_completed": false,
+    "device_booted": false,
+    "menu_unlocked": false
+  },
+  "usb_otg": "unconfirmed / deferred",
+  "secondary_sd": "unconfirmed",
+  "twrp": "optional / paused",
+  "busybox_replacement": "local source-built and emulator-tested candidate; current-card integration not established",
+  "image_release_cleared": false,
+  "raw_logs_published": false,
+  "games_or_assets_published": false
+}

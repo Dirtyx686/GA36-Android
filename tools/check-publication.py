@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'PUBLICATION-MANIFEST.json'
 MAX_BYTES = 1024 * 1024
 MAX_PHOTO_BYTES = 4 * 1024 * 1024
-REVIEWED_PHOTOS = {'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
+REVIEWED_PHOTOS = {'assets/illustrations/system-selection.jpg': '56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1', 'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
 ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json'}
 PATTERNS = [
     r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
@@ -141,6 +141,6 @@ if __name__ == '__main__':
     if problems:
         print('\n'.join(problems))
         sys.exit(1)
-    print('PASS: reviewed file set, UTF8/JSON text and four explicitly allowlisted JPEGs, sizes and SHA256 match; no unreviewed files or symlinks.')
+    print('PASS: reviewed file set, UTF8/JSON text and five explicitly allowlisted JPEG images, sizes and SHA256 match; no unreviewed files or symlinks.')
     print('Local root .git metadata excluded. Gitignore rules do not authorize extra files.')
     print('The manifest is not signed; this check is not a legal or exhaustive secret-scan guarantee.')

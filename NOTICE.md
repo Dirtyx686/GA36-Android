@@ -16,3 +16,7 @@ This file records the publication scope and provenance; it is not a guarantee of
 ## Device photographs
 
 The four device/board photographs under `assets/photos/` were supplied by the project owner for this README. Camera metadata has been reduced while retaining orientation; image pixels are unchanged. These historical test photos do not establish acceptance of later builds. No firmware or game assets are contained in these photos. The MIT selection for original code does not automatically relicense photographs.
+
+## Menu illustration
+
+`assets/illustrations/system-selection.jpg` is an additional user-supplied illustration of the Android 7 / locked Android 11 menu, labelled separately from real device photographs. It is not used as runtime evidence. Metadata was reduced without changing decoded image pixels.
