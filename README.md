@@ -12,7 +12,9 @@ So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm
 
 ## Where the project stands
 
-**V41 is currently running on my device**, using the V38 direct-boot baseline and the existing vendor kernel. The functions I currently use are working in my initial testing:
+**As of 8 November 2026, V65 is my latest local Android 7 build.** I have written it to my test card and verified the written contents by direct readback. **The physical V65 device test is still pending.** My V56 cold start was confirmed on the handheld; that is a separate, earlier result.
+
+Earlier device testing established:
 
 - Android startup and apps
 - Audio
@@ -21,11 +23,13 @@ So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm
 - Display off and wake
 - Power-button operation
 
-I still need longer testing and further checks after changes. **PC USB connectivity and OTG hub/flash-drive support remain unresolved.**
+V65 retains the previously working native audio, wake, Power and graphics files. This does not replace regression testing of the new build. **PC USB connectivity, OTG hub/flash-drive support and secondary-SD operation remain unconfirmed.** USB investigation is currently deferred.
 
-Android 7 is my permanent boot target. Android 5 and 6 are no longer bootable systems on the test card, but I have kept earlier states in local backups.
+Android 7 is my permanent boot target, using the **V38 direct-start baseline and vendor Linux 3.4.39 #522**, with the existing patches. Android 5 and 6 are no longer bootable systems on the test card; I have kept earlier states in local backups.
 
-V41 includes a built-in speaker routing guard and a dark display handoff. It retains the existing boot baseline and vendor kernel. I haven't installed my separate custom kernel yet.
+V65 adds launcher layout/theme options and an X+Y background-app cleanup action. Local behavior tests pass, but actual controller delivery and first-boot maintenance still need device testing. I removed overlapping automatic installation/compilation work; I have not measured a V65 performance improvement or boot-time reduction.
+
+See the [latest progress report](docs/updates/2026-11-08/progress-update.md) for the test boundaries.
 
 ## My custom kernel work
 
@@ -53,12 +57,15 @@ The implementation files I've published so far mainly come from the **earlier An
 
 I've added Android 7 progress reports and selected validation metadata. The full Android 7, custom-kernel and recovery implementations are **not published here yet**.
 
-**This repository is not a ready-to-flash release or a complete installation package. I haven't included stock firmware, Android images, game ROMs, full card images or private keys.**
+**This remains experimental. This repository is not a ready-to-flash release or a complete installation package. I haven't included stock firmware, Android images, game ROMs, full card images or private keys.**
 
 ## Development reports
 
-These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. They predate my latest V41 confirmation, so this README records the newer overall status.
+These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. Older reports describe historical builds and must not be read as current device acceptance.
 
+- [Latest V65 progress and pending tests](docs/updates/2026-11-08/progress-update.md)
+- [Current curated status](docs/updates/2026-11-08/status.json)
+- [Image release readiness and third-party software](docs/release-readiness.md)
 - [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
 - [Android 7 status and evidence categories](docs/updates/2026-11-06/android7-status.json)
 - [Custom kernel V39 checks](docs/updates/2026-11-06/kernel-v39-checks.json)

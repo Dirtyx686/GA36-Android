@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-08",
+  "board": "GA36-MB V1.2-20260416",
+  "runtime_platform": "Allwinner A33; ARM32; 512 MB RAM",
+  "hardware_marking_caveat": "Photographed Rockchip markings differ from runtime identification",
+  "android": {
+    "version": "7.0",
+    "api": 24,
+    "latest_local_build": "V65",
+    "write_and_direct_readback": "passed",
+    "physical_acceptance": "pending",
+    "historical_V56_cold_start": "owner confirmed",
+    "boot_baseline": "V38 direct start; patched vendor Linux 3.4.39 #522",
+    "V65_boot_region_rewritten": false
+  },
+  "historically_device_confirmed": [
+    "apps",
+    "audio",
+    "gamepad navigation",
+    "right-stick pointer and R1 click",
+    "display off and wake",
+    "Power operation"
+  ],
+  "V65_host_tests": {
+    "background_cleanup_control_flow": "passed with Android test doubles",
+    "launcher_behavior_control_flow": "passed with Android test doubles",
+    "physical_controller_delivery": "pending",
+    "measured_performance_gain": null
+  },
+  "open": [
+    "V65 device regression and first-boot maintenance",
+    "PC USB and OTG (deferred)",
+    "secondary SD physical response",
+    "V39 analog receive path and hardware validation",
+    "reproducible installation and release preparation"
+  ],
+  "custom_kernel": {
+    "version": "V39",
+    "local_build": true,
+    "static_module_checks": 5,
+    "installed_on_sd": false,
+    "device_tested": false
+  },
+  "TWRP": "paused indefinitely",
+  "publication": {
+    "scope": "curated text/source documentation; implementation predominantly Android 5",
+    "public_firmware_image": false,
+    "third_party_binary_clearance": "incomplete",
+    "raw_logs_or_application_inventory": false
+  }
+}
