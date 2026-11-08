@@ -2,12 +2,20 @@
 
 Status: 8 November 2026. **No public Android 7 SD image is provided.** V65 is a private test-card build awaiting device acceptance. Cleanup of that card does not make it a sanitized redistribution image.
 
-Before I can publish an image, I need to:
+## Release roadmap
 
-1. Establish redistribution terms for every included third-party binary and satisfy applicable source, notice and license obligations.
-2. Prepare new empty user data and remove private data, games and unreviewed application resources from every partition and installation staging area.
-3. Document the exact supported board, card requirements, write procedure, verification and recovery path.
-4. Test that distributable image on another card, including cold start, sound, controls, wake and Power behavior.
+My planned public test image must use my **own source-built GA36 kernel**. The currently running vendor kernel remains a development baseline; it is not the kernel target for this release. **TWRP is optional and is not a release requirement.**
+
+1. **Finish and validate the custom kernel.** Use the V39 development work as a starting point, complete the analog input receive path, and test boot, display/graphics, audio, buttons, sticks, wake and Power on the handheld. V39 is currently built and statically checked only; it has not been installed or device-tested.
+2. **Stabilize Android 7 with that kernel.** Check repeated cold starts and longer use. Document unresolved USB/OTG or secondary-SD limitations explicitly; do not advertise them as working.
+3. **Prepare reproducible sources and licenses.** Publish the kernel source, configuration, board changes and build instructions. Establish redistribution terms for every included third-party component and satisfy applicable source, notice and license obligations. A source-built kernel does not resolve rights for the remaining binaries.
+4. **Create a clean SD image.** Use newly prepared empty user data. Exclude private data, games, unreviewed game artwork and installation remnants from every partition and staging area.
+5. **Test installation on another card.** Document the exact supported board, card capacity requirements, writing and verification steps, first boot and recovery by rewriting the SD card. Verify cold start, sound, controls, wake and the Power menu.
+6. **Publish an experimental GitHub pre-release.** Include the verified image only after the above gates pass, SHA256 checksums, source/build information, installation/recovery instructions, known limitations and all required licensing notices. State the experimental status and applicable warranty limitations without claiming blanket immunity.
+
+### Optional TWRP package
+
+TWRP can be developed and tested separately and offered later as an optional package. Its development is still paused indefinitely; this roadmap does not claim that work has resumed or that recovery works on hardware. The SD installation and recovery instructions must remain usable without TWRP.
 
 ## Component review findings
 

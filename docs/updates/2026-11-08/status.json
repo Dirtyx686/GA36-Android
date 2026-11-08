@@ -47,5 +47,13 @@
     "public_firmware_image": false,
     "third_party_binary_clearance": "incomplete",
     "raw_logs_or_application_inventory": false
+  },
+  "release_plan": {
+    "required_kernel": "own source-built GA36 kernel, pending hardware validation",
+    "current_vendor_kernel": "development baseline",
+    "twrp_required": false,
+    "twrp_status": "optional; development remains paused",
+    "recovery_without_twrp": "rewrite SD card; instructions and testing required",
+    "public_image": "not released; kernel, licensing, clean-image and installation-test gates pending"
   }
 }

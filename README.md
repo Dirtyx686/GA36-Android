@@ -72,6 +72,12 @@ These are dated snapshots of the work. They distinguish device-confirmed results
 - [TWRP status](docs/updates/2026-11-06/twrp-status.json)
 - [Evidence index](docs/updates/2026-11-06/evidence-index.json)
 
+## Planned public test release
+
+I plan to use my **own source-built kernel** for the public Android 7 test image. The custom kernel still needs analog-input work and hardware validation; the current vendor-kernel build is a development baseline. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
+
+The [release roadmap](docs/release-readiness.md) covers kernel validation, Android integration, source/license preparation, a clean image, testing on another card and an experimental GitHub pre-release. No public image is available yet.
+
 ## What I want to work on next
 
 - Keep testing controls, audio, display wake and Power behavior on Android 7.
