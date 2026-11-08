@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-08",
-  "scope": "Reviewed source and documentation with an additional documentation-only source/validation update; no firmware, binaries, games or private logs.",
-  "base_commit": "4e2e06908b27b9fc87d8584f7f8f65b27c386e14",
+  "scope": "Reviewed source/documentation plus four explicitly reviewed device/board photographs; no firmware, executable binaries, games or private logs.",
+  "base_commit": "3a0685b6be216b3e0090d07731ee0a0f13bea111",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -15,18 +15,38 @@
     },
     {
       "path": "NOTICE.md",
-      "bytes": 1791,
-      "sha256": "3d8bee2b37a7d1a845aeb35c1e6924a4ec7570b6ce4b33fa2b06c14aaee59f10"
+      "bytes": 2228,
+      "sha256": "2ab5f4f859a8b2e5aa146fb0792ec4ba852be9512617770fa552c8932deb8898"
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 1258,
-      "sha256": "7d2253d253d06a2cc90ec15e894ed0e713bb7578ad833a8b9c033309b4d49d76"
+      "bytes": 1343,
+      "sha256": "b02e8620fcc367a1686df7a9276300a30c29265c15bf32c749c66dc10aefe6d8"
     },
     {
       "path": "README.md",
-      "bytes": 8067,
-      "sha256": "3dfc3f8278108208227448e75d944c0002d59c8bc3c35fc4c393e4721ad4e875"
+      "bytes": 9265,
+      "sha256": "eed668c06577fad9cd69483c0e6f7510a12fd5375a839319dc9f0def8acaad81"
+    },
+    {
+      "path": "assets/photos/android7-device.jpg",
+      "bytes": 2334325,
+      "sha256": "5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4"
+    },
+    {
+      "path": "assets/photos/android7-memory.jpg",
+      "bytes": 2754088,
+      "sha256": "d168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b"
+    },
+    {
+      "path": "assets/photos/board-button-side.jpg",
+      "bytes": 2701357,
+      "sha256": "e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663"
+    },
+    {
+      "path": "assets/photos/board-component-side.jpg",
+      "bytes": 2919596,
+      "sha256": "1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890"
     },
     {
       "path": "config/idc/GA36_UI_Pointer.idc",
@@ -155,8 +175,8 @@
     },
     {
       "path": "tools/check-publication.py",
-      "bytes": 5228,
-      "sha256": "416515d3fe9b2f5ab5de57133f1858e2dc19ea2242261d2e607dc9d29e179ef6"
+      "bytes": 6428,
+      "sha256": "5f976a4457641d7f25870b61dde9683fb5280a231554cb1f2016c0090deadd14"
     }
   ]
 }

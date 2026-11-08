@@ -10,6 +10,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'PUBLICATION-MANIFEST.json'
 MAX_BYTES = 1024 * 1024
+MAX_PHOTO_BYTES = 4 * 1024 * 1024
+REVIEWED_PHOTOS = {'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
 ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json'}
 PATTERNS = [
     r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
@@ -71,7 +73,8 @@ def check():
                 raise ValueError('Unsafe or duplicate manifest path')
             if not re.fullmatch(r'[0-9a-f]{64}', entry['sha256']):
                 raise ValueError('Invalid SHA256')
-            if type(entry['bytes']) is not int or not 0 <= entry['bytes'] <= MAX_BYTES:
+            limit = MAX_PHOTO_BYTES if rel in REVIEWED_PHOTOS else MAX_BYTES
+            if type(entry['bytes']) is not int or not 0 <= entry['bytes'] <= limit:
                 raise ValueError('Invalid file size')
             expected[rel] = entry
     except (ValueError, TypeError, KeyError, AttributeError, RecursionError) as exc:
@@ -107,9 +110,19 @@ def check():
             if rel not in expected:
                 errors.append('Unreviewed file: ' + rel)
                 continue
-            if p.suffix.lower() not in ALLOWED_SUFFIXES and rel != '.gitignore':
+            if p.suffix.lower() not in ALLOWED_SUFFIXES and rel != '.gitignore' and rel not in REVIEWED_PHOTOS:
                 errors.append('Unexpected file type: ' + rel)
-            data = inspect_text(p, rel, errors)
+            if rel in REVIEWED_PHOTOS:
+                if p.stat().st_size > MAX_PHOTO_BYTES:
+                    errors.append('Oversized reviewed photo: ' + rel)
+                    continue
+                data = p.read_bytes()
+                if not data.startswith(b'\xff\xd8') or not data.endswith(b'\xff\xd9'):
+                    errors.append('Invalid JPEG framing: ' + rel)
+                if hashlib.sha256(data).hexdigest() != REVIEWED_PHOTOS[rel]:
+                    errors.append('Photo differs from explicitly reviewed image: ' + rel)
+            else:
+                data = inspect_text(p, rel, errors)
             if data is None:
                 continue
             if len(data) != expected[rel]['bytes']:
@@ -128,6 +141,6 @@ if __name__ == '__main__':
     if problems:
         print('\n'.join(problems))
         sys.exit(1)
-    print('PASS: reviewed file set, UTF8/JSON, sizes and SHA256 match; no unreviewed files or symlinks.')
+    print('PASS: reviewed file set, UTF8/JSON text and four explicitly allowlisted JPEGs, sizes and SHA256 match; no unreviewed files or symlinks.')
     print('Local root .git metadata excluded. Gitignore rules do not authorize extra files.')
     print('The manifest is not signed; this check is not a legal or exhaustive secret-scan guarantee.')

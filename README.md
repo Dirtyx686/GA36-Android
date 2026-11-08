@@ -4,6 +4,28 @@ I'm working on an Android port for my R36S-style handheld with a **GA36-MB V1.2-
 
 I develop this project **with AI assistance**. I use AI tools to help analyse the firmware, write and adapt code, investigate problems, and prepare documentation. I test the changes on my own handheld. A successful build or an AI-generated explanation is not enough for me to call a feature working — I distinguish local checks from actual device tests below.
 
+## Photos of my device
+
+These are photos of my test handheld and board, not rendered mockups. The Android photos were taken on 6 November 2026 and do not identify or validate every later build.
+
+<img src="assets/photos/android7-device.jpg" alt="GA36 handheld showing Android 7.0 and vendor kernel 3.4.39 #522" width="360">
+
+*Android 7.0 running on the GA36 handheld, using the vendor kernel shown on screen.*
+
+<details>
+<summary>Memory view and board photos</summary>
+
+<img src="assets/photos/android7-memory.jpg" alt="Android memory settings on the GA36 test handheld" width="320">
+
+*Memory settings during that test: about 496 MB reported total, 304 MB average use and 191 MB free. This is a snapshot, not a performance benchmark.*
+
+<img src="assets/photos/board-component-side.jpg" alt="GA36-MB V1.2-20260416 component side with chips and display connector" width="360">
+<img src="assets/photos/board-button-side.jpg" alt="Opposite side of the GA36 board with button contacts, card slots and USB ports" width="360">
+
+*Both sides of my GA36-MB V1.2-20260416 board. Printed chip markings differ from the runtime platform identification described below.*
+
+</details>
+
 ## My hardware
 
 Runtime analysis identifies my board as **Allwinner A33 with 512 MB RAM**. The photographed chips have Rockchip markings, which differ from that runtime identification.
@@ -94,7 +116,7 @@ If you have matching hardware, board documentation or relevant driver knowledge,
 
 ## Publication checks and attribution
 
-I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON content, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
+I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON text, explicitly reviewed JPEG photos, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
 
 Run it with:
 
