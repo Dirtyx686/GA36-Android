@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-10",
+  "board": "GA36-MB V1.2-20260416",
+  "runtime_platform": "Allwinner A33",
+  "physical_ram_MiB": 512,
+  "android11": {
+    "payload": "P23",
+    "kernel": "K09 Linux 3.4.39 #80",
+    "installed_and_changed_ranges_readback_verified": true,
+    "prior_P22_framework_and_GUI_boot_logged": true,
+    "P23_boot_run_user_confirmed": true,
+    "fresh_P23_runtime_logs_available": false,
+    "stable_complete_runtime_acceptance": false,
+    "settings_navigation_user_confirmed": true,
+    "all_Settings_features_tested": false,
+    "right_stick_mouse": "unresponsive after P23; unresolved",
+    "sound_gameplay_power_wake_full_regression": "not all specifically confirmed for P23"
+  },
+  "android7": {
+    "kernel": "D04 #72",
+    "boot_system_and_existing_user_data_preserved": true
+  },
+  "last_detailed_device_capture": "P22",
+  "P23_changes": {
+    "legacy_uinput_short_write_fix": "installed; ARM positive/negative checks passed; mouse still fails on device",
+    "Settings_descendant_focus": "compiled correction installed; navigation confirmed by latest user feedback"
+  },
+  "P22_findings": {
+    "framework_startup_seconds": 130.112,
+    "reference_P21_framework_startup_seconds": 160.071,
+    "repeated_benchmark": false,
+    "new_SystemUI_ANR_in_capture": false,
+    "DocumentsUI_external_storage_ANRs_remain": true
+  },
+  "memory": {
+    "verified_in": "P22",
+    "zram_MiB": 256,
+    "zram_priority": 100,
+    "sd_swap_GiB": 4,
+    "sd_swap_priority": 10,
+    "both_active": true,
+    "both_used_KiB_at_snapshot": 0,
+    "performance_gain_proved": false
+  },
+  "P24": {
+    "status": "requested/planned",
+    "implemented": false,
+    "built": false,
+    "installed": false
+  },
+  "development_paused_by_user": true,
+  "deferred": [
+    "PC USB / OTG",
+    "secondary SD",
+    "direct OS startup without extra restart"
+  ],
+  "twrp": "optional / paused",
+  "current_image_release_cleared": false,
+  "raw_logs_or_game_packages_published": false,
+  "photos": "four new user-supplied Android11 test photos; launcher photo includes a game tile; exact P23 version not identifiable from photos"
+}

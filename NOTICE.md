@@ -20,3 +20,7 @@ The four device/board photographs under `assets/photos/` were supplied by the pr
 ## Menu illustration
 
 `assets/illustrations/system-selection.jpg` is an additional user-supplied illustration of the Android 7 / locked Android 11 menu, labelled separately from real device photographs. It is not used as runtime evidence. Metadata was reduced without changing decoded image pixels.
+
+## Android 11 device-test photographs
+
+Four additional photographs under `assets/photos/android11-*.jpg` were supplied by the owner for the 10 November 2026 update. Metadata was reduced while retaining orientation and identical decoded pixels. The launcher photograph includes a visible installed-game tile, included at the owner's explicit request; no game APK, data or standalone game artwork is distributed. These photos are not independently labelled with the exact P23 build. Their inclusion does not establish complete device acceptance or relicense third-party software.

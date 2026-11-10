@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "review_date": "2026-11-08",
-  "scope": "Reviewed source/documentation, curated V69/D03 status, four device/board photos and one labelled menu illustration; no firmware, executable binaries, games or raw logs.",
-  "base_commit": "5623bcfa1106708b1f9411399f5ce75241718fa2",
+  "review_date": "2026-11-10",
+  "scope": "Reviewed source/documentation, curated Android11 P23/K09 and preserved Android7 status, eight test/hardware photos and one historical illustration; no firmware/executable images, game packages/data or raw private logs.",
+  "base_commit": "e17f0ca22e92901d201e2b614e5ca76d9d0216a7",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -15,23 +15,43 @@
     },
     {
       "path": "NOTICE.md",
-      "bytes": 2528,
-      "sha256": "9cb39be0efffe4a16dd85969f768e95e7304cb7a050a75e4a0f09faf8517255c"
+      "bytes": 3107,
+      "sha256": "95dfd3643205ab4be0e90aa2efe7981880654e98ffe004ccf9e895b8ae562116"
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 1389,
-      "sha256": "879863ffb6828a3996f5f248653f4f2b49dc96e3cd410ea0c0ec755cdfb21b22"
+      "bytes": 1682,
+      "sha256": "7ae207c40115328737bb660cdb086c4b24fbceedffae7111599cddd89d080af7"
     },
     {
       "path": "README.md",
-      "bytes": 10568,
-      "sha256": "c0557aa8e43b17fc80bb0779dbd412d30c9142baec3fe900ac3ea23eff86d9b6"
+      "bytes": 11138,
+      "sha256": "a25eceb3169e0ddd815ebb43841d2cf0d2d0fc335fc85bcd060ee2d8f1cb1488"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
       "bytes": 156886,
       "sha256": "56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1"
+    },
+    {
+      "path": "assets/photos/android11-boot-logo.jpg",
+      "bytes": 1324345,
+      "sha256": "61fc8723d461787bb703ee3545bf9de56638e2941765f878d88a373d7b871eac"
+    },
+    {
+      "path": "assets/photos/android11-launcher.jpg",
+      "bytes": 1383552,
+      "sha256": "da714246dcfb7a8ea1d4e67ea9c9666e0aecfacda2d247e61dbb4dbcda9f7bea"
+    },
+    {
+      "path": "assets/photos/android11-settings.jpg",
+      "bytes": 1302853,
+      "sha256": "c07fcd5d150a2f2099170657bbeec7eefe72d181dceb6a16bcd7e35cc4d6e3f0"
+    },
+    {
+      "path": "assets/photos/android11-starting.jpg",
+      "bytes": 1312198,
+      "sha256": "d2ffe408bc329fbb43bf23e8d1796276aab9cfa45f374921cbf34c8787483920"
     },
     {
       "path": "assets/photos/android7-device.jpg",
@@ -105,8 +125,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 5343,
-      "sha256": "e23aceddf8b6c1c01b7883b2c46a46edb930c58962464d082faa8f3071c5eb26"
+      "bytes": 5620,
+      "sha256": "e3a8289b3dc371cb0a8d7d1c4c74f46b08e89563b2a924ccf7cfdb8887b1712c"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -169,6 +189,16 @@
       "sha256": "c32127eb6c8ca083a34d239babc30ad7b1f665dcf67ae4817aedb7efa64cc262"
     },
     {
+      "path": "docs/updates/2026-11-10/latest-status.json",
+      "bytes": 2122,
+      "sha256": "df21f087580d58151432325276bb3e9ad2018b6e0ec6d5ddd389a7343e347b85"
+    },
+    {
+      "path": "docs/updates/2026-11-10/p23-k09-status.md",
+      "bytes": 5150,
+      "sha256": "e86ac35c7f50a38ae8e1e6cfbf5ced059cb1b30f17e8fa8b568f31e846d9adb5"
+    },
+    {
       "path": "docs/usb-status.md",
       "bytes": 1276,
       "sha256": "1b60b56e1117b8172c09d2a066fa6ed28d77b43ffe6f7c8b2569dd3016151bf4"
@@ -190,8 +220,8 @@
     },
     {
       "path": "tools/check-publication.py",
-      "bytes": 6547,
-      "sha256": "43f209d961715613d6d9e422e8a5fbb78685116c8afe76ddf42a7ae162b12b89"
+      "bytes": 6980,
+      "sha256": "70fd8368ab20a70930d43908c0727bef0d74115ef7b5625b79af5cb1dc7a7131"
     }
   ]
 }

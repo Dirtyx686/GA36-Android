@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'PUBLICATION-MANIFEST.json'
 MAX_BYTES = 1024 * 1024
 MAX_PHOTO_BYTES = 4 * 1024 * 1024
-REVIEWED_PHOTOS = {'assets/illustrations/system-selection.jpg': '56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1', 'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
+REVIEWED_PHOTOS = {'assets/photos/android11-boot-logo.jpg': '61fc8723d461787bb703ee3545bf9de56638e2941765f878d88a373d7b871eac', 'assets/photos/android11-starting.jpg': 'd2ffe408bc329fbb43bf23e8d1796276aab9cfa45f374921cbf34c8787483920', 'assets/photos/android11-launcher.jpg': 'da714246dcfb7a8ea1d4e67ea9c9666e0aecfacda2d247e61dbb4dbcda9f7bea', 'assets/photos/android11-settings.jpg': 'c07fcd5d150a2f2099170657bbeec7eefe72d181dceb6a16bcd7e35cc4d6e3f0', 'assets/illustrations/system-selection.jpg': '56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1', 'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
 ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json'}
 PATTERNS = [
     r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
@@ -141,6 +141,6 @@ if __name__ == '__main__':
     if problems:
         print('\n'.join(problems))
         sys.exit(1)
-    print('PASS: reviewed file set, UTF8/JSON text and five explicitly allowlisted JPEG images, sizes and SHA256 match; no unreviewed files or symlinks.')
+    print('PASS: reviewed file set, UTF8/JSON text and nine explicitly allowlisted JPEG images, sizes and SHA256 match; no unreviewed files or symlinks.')
     print('Local root .git metadata excluded. Gitignore rules do not authorize extra files.')
     print('The manifest is not signed; this check is not a legal or exhaustive secret-scan guarantee.')

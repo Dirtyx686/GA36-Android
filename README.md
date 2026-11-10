@@ -1,10 +1,99 @@
 # GA36 Android
 
-I'm working on an Android port for my R36S-style handheld with a **GA36-MB V1.2-20260416** board. I started with Android 5.0, moved through Android 6, and now have **Android 7.0 Nougat / API 24** running on the device.
+I'm developing an experimental Android port for my R36S-style handheld with a **GA36-MB V1.2-20260416** board. I started with Android 5.0, moved through Android 6 and 7, and now have **Android 11 booting on the handheld**, alongside my preserved Android 7 setup. **The experimental dual-boot setup offers Android 7 and Android 11; switching between them currently requires a restart.**
 
-I develop this project **with AI assistance**. I use AI tools to help analyse the firmware, write and adapt code, investigate problems, and prepare documentation. I test the changes on my own handheld. A successful build or an AI-generated explanation is not enough for me to call a feature working — I distinguish local checks from actual device tests below.
+I develop this project **with AI assistance**. I use AI tools to help analyse firmware, write and adapt code, investigate problems and prepare documentation. I test changes on my own device. Below I distinguish device results, my latest test feedback and local build/emulation checks.
 
-## Photos of my device
+**This is an experimental project for one tested board revision. No ready-to-flash image is available here.** The README and current progress report are in English for international readers; some on-device UI labels are still German.
+
+## Android 11 on my handheld
+
+<img src="assets/photos/android11-settings.jpg" alt="GA36 handheld displaying Android 11 Settings" width="360">
+
+*User-supplied Android 11 test photo showing Settings on the device. I have now confirmed that Settings navigation works. This is not a full test of every settings feature.*
+
+<details>
+<summary>Android 11 startup and launcher photos</summary>
+
+<img src="assets/photos/android11-boot-logo.jpg" alt="GA36 Android 11 boot logo on the handheld" width="300">
+<img src="assets/photos/android11-starting.jpg" alt="Android startup screen reading Tablet is starting on the GA36 handheld" width="300">
+
+*Boot branding and the startup screen. These images show stages of startup, not completion by themselves.*
+
+<img src="assets/photos/android11-launcher.jpg" alt="GA36 launcher displayed during the Android 11 device test" width="360">
+
+*The GA36 launcher with an installed-game tile visible. The photo documents the launcher; it does not establish successful launch/gameplay. No game APK, game data or standalone game artwork is distributed with this repository.*
+
+</details>
+
+The photographs are supplied as Android 11 device-test photos. They do not independently identify the exact P23 build; current version information is based on installation records and test feedback.
+
+## Current status — 10 November 2026
+
+| Area | Current evidence and limits |
+| --- | --- |
+| Android 11 | **P23 installed and directly readback-verified**, using my source-built **K09 kernel, Linux 3.4.39 #80**. I report that Android 11 boots/runs. Detailed logs confirm earlier P22 framework/GUI startup; fresh P23 runtime logs are still pending. |
+| Settings | The P23 focus correction was built and inspected. **I now confirm Settings navigation works on the device.** This does not certify every setting. |
+| Right-stick mouse / R1 | **Still not working.** P23 includes a locally tested legacy-uinput short-write correction, but I still see no mouse reaction. The cause needs further device diagnosis. |
+| Launcher / display | Android 11 launcher and Settings are visible in the supplied photos. Complete graphics, controls, sound and long-running stability acceptance remains open. |
+| Android 7 | Preserved with the **D04 kernel #72**. Its boot/system contents and existing user data were protected during the P23 installation. |
+| Memory | **256 MiB zRAM and 4 GiB SD swap** were active in the last detailed P22 device test. Both showed zero usage in that snapshot. Physical RAM remains 512 MiB; this is not a performance benchmark. |
+| P24 | Planned input diagnosis, measured performance work and boot-menu improvements. **No P24 implementation, build or installation is claimed.** Development is paused at my request; this update changes documentation only. |
+| USB / secondary SD | PC USB, OTG hub/flash-drive support and the second SD slot remain unconfirmed/deferred. Direct OS startup without an additional restart is also deferred. |
+| TWRP | Optional and paused. It is not required for the planned SD-card installation/recovery route. |
+
+The Android 11 entry is no longer merely the locked preparation placeholder shown in the old V69 report: Android 11 has since booted on the device. OS switching still uses the existing restart-based test mechanism. I am not presenting this as a finished or universally compatible dual-boot release.
+
+**Known remaining issues:** the mouse is unresponsive; the last P22 logs contain DocumentsUI/external-storage hangs. Audio, gameplay, repeated Power/wake and complete control regression on P23 are not all confirmed by the general “runs” report. Fresh P23 logs are needed to assess those areas.
+
+See the [current P23/K09 progress report](docs/updates/2026-11-10/p23-k09-status.md) and [curated current status](docs/updates/2026-11-10/latest-status.json). Older dated reports describe earlier states and are not current acceptance records.
+
+## My hardware
+
+Runtime analysis identifies my board as **Allwinner A33 with 512 MiB RAM**. The photographed chips have Rockchip markings, which differ from that runtime identification. I have tested one **GA36-MB V1.2-20260416** board; other revisions and handhelds are not validated by this work.
+
+## Kernel work — runtime progress, packages still local
+
+Android 11 currently uses my source-built **K09 #80** kernel. The latest installation reuses that kernel; prior P21/P22 device records confirm it boots. Android 7 retains **D04 #72**. The kernel work includes Android compatibility changes, with static interface checks for 377 imports across five board modules. Some vendor modules remain retained for local testing.
+
+Booting a kernel does not establish complete input, graphics, audio, security or suspend/wake correctness. Full source/build packages remain local for now, as previously requested; I am only documenting the progress here. Source and redistribution work for retained components remains open.
+
+## BusyBox preparation — local only
+
+A separate static ARM BusyBox 1.36.1 replacement has sources, configuration, changes and license notices prepared locally. Seventeen ARM-emulation checks passed, including legacy `timeout -t` compatibility, and its saved build recipe produced a second working local build. Integration of that candidate into the current P23 system is not established by these results.
+
+## What is published here
+
+Much of the original implementation comes from the earlier Android 5 bring-up:
+
+- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper from that earlier stage.
+- `src/lights-ga36.c`: experimental Android 5 backlight HAL.
+- `src/test-kernel-branches.c`: isolated Power-event branch test.
+- `config/`: selected input mappings and policy.
+- Dated Android progress reports, curated evidence summaries, hardware photos and a labelled historical menu illustration.
+
+**The published source files are not a complete representation of the current P23 implementation.** In particular, the older pointer source must not be described as a working Android 11 pointer solution. Full Android 11 integration, kernel packages, system images and recovery implementation are not published here.
+
+No stock firmware, full card images, Android images, game APKs/data, private keys or raw device logs are added by this update. The launcher photograph includes a visible game tile; it is a test photo, not distribution of the game.
+
+## Release preparation
+
+My next work is to diagnose the remaining mouse failure, capture fresh P23 logs, measure performance and improve the boot-menu/test flow. Settings navigation is now device-confirmed, while broader system acceptance remains open. P24 is still a plan.
+
+A public image also requires complete source/license preparation, a clean image without private/game data, installation/recovery instructions and validation on another card. Existing Mali/audio/boot components remain technically retained; missing matching redistribution/source evidence is not treated as a grant. MIT is selected for my original code only; imported material keeps its own terms. See the [release roadmap](docs/release-readiness.md) and [NOTICE](NOTICE.md).
+
+## Development reports
+
+- [Current P23 / K09 update — 10 November 2026](docs/updates/2026-11-10/p23-k09-status.md)
+- [Current curated status](docs/updates/2026-11-10/latest-status.json)
+- [Earlier V69 / D03 and Android 11 preparation snapshot](docs/updates/2026-11-08/v69-d03-status.md)
+- [Earlier source and BusyBox review](docs/updates/2026-11-08/source-and-validation-update.md)
+- [Earlier V65 progress](docs/updates/2026-11-08/progress-update.md)
+- [Android 7 bring-up report](docs/updates/2026-11-06/progress-update.md)
+- [Historical V39 kernel checks](docs/updates/2026-11-06/kernel-v39-checks.json)
+- [Historical TWRP status](docs/updates/2026-11-06/twrp-status.json)
+
+## Earlier Android 7 and hardware photos
 
 These are photos of my test handheld and board, not rendered mockups. The Android photos were taken on 6 November 2026 and do not identify or validate every later build.
 
@@ -26,108 +115,27 @@ These are photos of my test handheld and board, not rendered mockups. The Androi
 
 </details>
 
-## My hardware
 
-Runtime analysis identifies my board as **Allwinner A33 with 512 MB RAM**. The photographed chips have Rockchip markings, which differ from that runtime identification.
+## Historical menu illustration
 
-So far, I've tested this on **one GA36-MB V1.2-20260416 board**. I can't confirm compatibility with other revisions or other A33 handhelds.
+<details>
+<summary>Earlier V69 preparation menu, with Android 11 still locked at that time</summary>
 
-## Where the project stands
+<img src="assets/illustrations/system-selection.jpg" alt="Historical V69 menu illustration with Android 11 locked during preparation" width="320">
 
-**Updated 8 November 2026: V69 is the latest installed Android 7 development build confirmed running. It now uses my source-built D03 Linux 3.4.39 kernel (#70). V70 wake/display work is in preparation; it is not an accepted release.**
+*This user-supplied illustration describes the earlier preparation stage. It is not the current Android 11 availability status and is not runtime evidence.*
 
-V69 was installed and checked by direct readback. I reported that it boots and runs; fresh device logs separately confirm the D03 kernel identity and the native system-selection menu before Android starts. This supersedes the earlier V65/vendor-kernel development status below in dated reports.
-
-The native menu offers Android 7 and a **locked Android 11 placeholder**. Real input events and an Android 7 selection were recorded before Android init. Android 7 is the configured default after five seconds; navigation pauses the countdown. **Android 11 has not been built as a complete system or booted.** This is not a working Android 7/11 dual-boot release.
-
-<img src="assets/illustrations/system-selection.jpg" alt="Illustration of the GA36 system-selection menu with Android 7 enabled and Android 11 locked" width="360">
-
-*User-supplied menu illustration. Runtime confirmation comes from device logs; this image does not establish that Android 11 works. The menu currently uses German labels; this README is maintained in English for international readers.*
-
-Earlier testing confirmed Android/apps, audio, gamepad navigation, both sticks, right-stick mouse with R1 click and Power-button operation on the earlier development baseline. Those results are historical; I still distinguish them from complete per-feature acceptance of the new kernel and startup path.
-
-**Known current issue:** waking after Power can intermittently leave the display black and require a reset. V70 preparation addresses the wake/display path and the repeated logo/dark-handoff sequence. Earlier successful wake tests are not a claim that this regression is fixed.
-
-Device startup logs show **256 MiB zRAM and a 4 GiB SD swap file active**, with priorities 100 and 10. Both were unused in the captured snapshots; runtime load/performance testing is still needed. Physical RAM remains 512 MiB.
-
-**PC USB, OTG hub/flash-drive support and secondary-SD operation remain unconfirmed.** USB investigation is deferred. Android 5 and 6 remain earlier development stages, with backups kept locally.
-
-See the [latest V69/D03 progress report](docs/updates/2026-11-08/v69-d03-status.md) and [current status summary](docs/updates/2026-11-08/latest-status.json). Full cold-start/restart, audio, controls and suspend/wake regression acceptance remains open.
-
-## Own kernel — D03 running, sources kept local for now
-
-D03 (#70) is installed and its identity is confirmed by device logs. It incorporates the diagnostic work on the vendor partition layout, audio machine-driver integration and the analog UART receive path. Static checks cover 377 versioned imports across five board modules, without CRC overrides; some vendor modules are still retained for local testing.
-
-Boot success does not complete graphics, audio, analog-control or suspend/wake validation. Kernel source archives and build packages remain outside this GitHub publication for now; source/rights work for retained components is still open.
-
-## BusyBox preparation — local only
-
-I have built a static ARM BusyBox 1.36.1 replacement, including compatibility with the older `timeout -t` calls used by my helpers. **17 ARM-emulation checks passed**, and the saved build recipe also produced a second working local build. Sources, configuration, changes and license notices are prepared locally. Device integration is still pending; this is not a promise of compatibility with every command in the older BusyBox.
-
-## Recovery experiments
-
-I've also worked on an experimental TWRP build and a GA36-specific recovery configuration. Local ARM emulator self-tests passed, but I haven't confirmed a working recovery UI on the device.
-
-I've **paused TWRP development indefinitely** for now. After the recovery tests, I restored the V38 Android startup path and verified it by direct card readback. The V38 direct-start layout is historical context; the current V69 test uses the D03 kernel and native pre-Android menu.
-
-## What you'll find here
-
-The implementation files I've published so far mainly come from the **earlier Android 5 bring-up**:
-
-- `src/ga36-pointer.c`: ARM32 evdev-to-uinput mouse helper.
-- `src/lights-ga36.c`: experimental Android 5 ARM32 backlight HAL.
-- `src/test-kernel-branches.c`: isolated ARM test for the Power-event suppression change.
-- `config/`: board-specific input mappings and device policy.
-- `docs/power-button.md` and `docs/usb-status.md`: earlier technical findings.
-
-I've added Android 7 progress reports and selected validation metadata. The full Android 7, custom-kernel and recovery implementations are **not published here yet**.
-
-**This remains experimental. This repository is not a ready-to-flash release or a complete installation package. I haven't included stock firmware, Android images, game ROMs, full card images or private keys.**
-
-## Development reports
-
-These are dated snapshots of the work. They distinguish device-confirmed results from offline checks and pending tests. Older reports describe historical builds and must not be read as current device acceptance.
-
-- [Latest V69/D03 startup, memory and Android 11 preparation update](docs/updates/2026-11-08/v69-d03-status.md)
-- [Current status summary](docs/updates/2026-11-08/latest-status.json)
-- [Earlier source, validation and release-status update](docs/updates/2026-11-08/source-and-validation-update.md)
-- [Earlier V65 progress and pending tests](docs/updates/2026-11-08/progress-update.md)
-- [Earlier V65 curated status](docs/updates/2026-11-08/status.json)
-- [Image release readiness and third-party software](docs/release-readiness.md)
-- [Android 7 progress update](docs/updates/2026-11-06/progress-update.md)
-- [Android 7 status and evidence categories](docs/updates/2026-11-06/android7-status.json)
-- [Custom kernel V39 checks](docs/updates/2026-11-06/kernel-v39-checks.json)
-- [TWRP status](docs/updates/2026-11-06/twrp-status.json)
-- [Evidence index](docs/updates/2026-11-06/evidence-index.json)
-
-## Planned public test release
-
-I plan to use my **own source-built kernel** for the public Android 7 test image. D03 has now booted on the handheld, but full hardware acceptance and the retained-component source/license work remain open. **TWRP will be optional**, remains paused, and will not block the release. Installation and recovery must work by writing the SD card without TWRP.
-
-The [release roadmap](docs/release-readiness.md) covers kernel validation, Android integration, source/license preparation, a clean image, testing on another card and an experimental GitHub pre-release. No public image is available yet.
-
-## What I want to work on next
-
-- Resolve the intermittent black-screen wake issue and validate controls, audio, display and Power on the D03/V69 baseline.
-- Investigate PC USB and OTG hub/flash-drive operation.
-- Finish full device regression tests and source/license preparation for the custom-kernel integration.
-- Put together reproducible build instructions and a board-specific installation and recovery process.
-
-If you have matching hardware, board documentation or relevant driver knowledge, I'd welcome your findings. Please don't assume that sharing the same SoC makes another device compatible with this port.
+</details>
 
 ## Publication checks and attribution
 
-I keep the publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files, and `tools/check-publication.py` checks the file list, UTF-8/JSON text, explicitly reviewed JPEG photos/illustrations, sizes and SHA256 hashes. It rejects extra files and symlinks while excluding local root `.git` metadata.
-
-Run it with:
+I keep publication separate from my full local working directory. `PUBLICATION-MANIFEST.json` records the reviewed files. `tools/check-publication.py` verifies the file list, UTF-8/JSON text, explicitly reviewed JPEG images, sizes and SHA256 hashes, rejecting extra files and symlinks while excluding root `.git` metadata.
 
 ```sh
 python3 tools/check-publication.py
 ```
 
-New or changed files need review and a corresponding manifest update. The manifest isn't signed, and the checker isn't a guarantee of legal clearance or a complete secret scan.
-
-See [NOTICE.md](NOTICE.md) for provenance and licensing status. I have selected MIT for my own original code; the scoped license package is separate from this documentation update. This does not relicense imported files or grant permission to redistribute third-party firmware.
+The manifest is not signed, and this check is not legal clearance or an exhaustive secret scan. See [NOTICE.md](NOTICE.md) for provenance and licensing scope. The MIT choice for original code is not a blanket license for imported firmware or photographs.
 
 ## Related post
 
