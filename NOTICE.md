@@ -24,3 +24,7 @@ The four device/board photographs under `assets/photos/` were supplied by the pr
 ## Android 11 device-test photographs
 
 Four additional photographs under `assets/photos/android11-*.jpg` were supplied by the owner for the 10 November 2026 update. Metadata was reduced while retaining orientation and identical decoded pixels. The launcher photograph includes a visible installed-game tile, included at the owner's explicit request; no game APK, data or standalone game artwork is distributed. These photos are not independently labelled with the exact P23 build. Their inclusion does not establish complete device acceptance or relicense third-party software.
+
+## Flasher companion tool
+
+`tools/flasher/` contains project-created flasher source, documentation, GUI screenshots and a GUI-only binary package. The executables are built from that Go source and the Go standard library; Go toolchain/runtime licensing remains applicable (https://go.dev/LICENSE). No Android firmware or game software is bundled. The GUI screenshots show a simulated card environment, not physical flashing acceptance. This addition does not expand redistribution permission for any ROM, vendor binary or game.

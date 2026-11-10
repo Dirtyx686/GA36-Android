@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-10",
-  "scope": "Reviewed source/documentation, curated Android11 P23/K09 and preserved Android7 status, eight test/hardware photos and one historical illustration; no firmware/executable images, game packages/data or raw private logs.",
-  "base_commit": "e17f0ca22e92901d201e2b614e5ca76d9d0216a7",
+  "scope": "Reviewed sources, curated status, device photos, flasher GUI source/screenshots/checks and pinned GUI-only executable ZIP; no Android/SD images, games, APK/OBB data or raw device logs.",
+  "base_commit": "935bdc80475968c06764696dc105567ed425603d",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -10,23 +10,23 @@
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 237,
-      "sha256": "a39fb37a4fda47b193903cde7abec1aee1e8c9f140ec82e63527486e49aa93c8"
+      "bytes": 351,
+      "sha256": "62f03218c0800ff231d7ef2895a8dfc978b7f1ac72eabbb2a88cc821a8867a8e"
     },
     {
       "path": "NOTICE.md",
-      "bytes": 3107,
-      "sha256": "95dfd3643205ab4be0e90aa2efe7981880654e98ffe004ccf9e895b8ae562116"
+      "bytes": 3636,
+      "sha256": "1fe459affad457a61cfec0a95a20f3b53c2d74678bb48de477c870bd5d535185"
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 1682,
-      "sha256": "7ae207c40115328737bb660cdb086c4b24fbceedffae7111599cddd89d080af7"
+      "bytes": 2295,
+      "sha256": "6e13b52f642e59f86db4c96ccad9798d6334499b77fca5e836dc92720d16d0fb"
     },
     {
       "path": "README.md",
-      "bytes": 11138,
-      "sha256": "a25eceb3169e0ddd815ebb43841d2cf0d2d0fc335fc85bcd060ee2d8f1cb1488"
+      "bytes": 12072,
+      "sha256": "451db5ae89cdda6647a0f318cc6afb086263308cce628b535b0bdfdfb9df3610"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
@@ -220,8 +220,138 @@
     },
     {
       "path": "tools/check-publication.py",
-      "bytes": 6980,
-      "sha256": "70fd8368ab20a70930d43908c0727bef0d74115ef7b5625b79af5cb1dc7a7131"
+      "bytes": 8875,
+      "sha256": "0b14d6f08b4e6259d9a5a22b822cc6b62cb3dbcbc5d49f1e04852ab611c9d5ed"
+    },
+    {
+      "path": "tools/flasher/GA36-Flasher-GUI-Windows-Linux.zip",
+      "bytes": 6956126,
+      "sha256": "38e7b54f6f76aa5443ca43569550fda0d9e45bbcd3ae019b5b0bb673e60c6a0b"
+    },
+    {
+      "path": "tools/flasher/GA36-Flasher-GUI-Windows-Linux.zip.sha256",
+      "bytes": 101,
+      "sha256": "26c573cb858f799d2368974f4d07af9772b638d260fb0abc84e7728618764f26"
+    },
+    {
+      "path": "tools/flasher/README.md",
+      "bytes": 5773,
+      "sha256": "cd2409325d9047f203a5d029463140b4bef673ccb505241bc2c9b396a11aaab0"
+    },
+    {
+      "path": "tools/flasher/checks/browser-results.json",
+      "bytes": 334,
+      "sha256": "79e4ea6f3ae9294a56b68c4f3b6e246d70d82289b0cd055f623e864caca2e28f"
+    },
+    {
+      "path": "tools/flasher/checks/tests.txt",
+      "bytes": 2316,
+      "sha256": "f5e9d16f77131b9f9003741c2c0a271619f9cbd9034eb10f550bb010474a0005"
+    },
+    {
+      "path": "tools/flasher/screenshots/apks.png",
+      "bytes": 91962,
+      "sha256": "9a1f33ed266e3e54e9ee095b90c1880d5684157d681bd12466d73c5b82a79609"
+    },
+    {
+      "path": "tools/flasher/screenshots/system.png",
+      "bytes": 101768,
+      "sha256": "5c28730b7e644efb21d9d7cbc7b5f00ccc27232dfa5f5f5ffb3b1f0750eb891e"
+    },
+    {
+      "path": "tools/flasher/src/device_linux.go",
+      "bytes": 8165,
+      "sha256": "80848ab1c81f2cb927ac1ee8838b018c17537ee93219ffd67834de49c1bf04eb"
+    },
+    {
+      "path": "tools/flasher/src/device_linux_test.go",
+      "bytes": 926,
+      "sha256": "e78f3da2b21276ec7a84ce329b77a304f3fb78acd6089b5171e3335ffae620e9"
+    },
+    {
+      "path": "tools/flasher/src/device_windows.go",
+      "bytes": 8524,
+      "sha256": "6256d48ebb43c2d50fceb5c806a6ef1681e9d094e1f0526c60e8ca875e3f3170"
+    },
+    {
+      "path": "tools/flasher/src/go.mod",
+      "bytes": 35,
+      "sha256": "7cc2220f8d96c7b2a2a073516ca00a48b6628dac66078da4939cb8a3710d8cc6"
+    },
+    {
+      "path": "tools/flasher/src/gui.go",
+      "bytes": 21032,
+      "sha256": "e730c12cddbdab8722e42ee06392663adda621bdc18ccafbf8f628e2a818de80"
+    },
+    {
+      "path": "tools/flasher/src/gui_launch.go",
+      "bytes": 5734,
+      "sha256": "f5074a169dc1aba443a1be0de7400b3b506d68830861f11b99b57ac23210c75a"
+    },
+    {
+      "path": "tools/flasher/src/gui_linux.go",
+      "bytes": 1515,
+      "sha256": "2453fdf0b53d325e8a47d64f3086fa70cab85e30501c40dba04d7d8d461e4e0c"
+    },
+    {
+      "path": "tools/flasher/src/gui_test.go",
+      "bytes": 4027,
+      "sha256": "55780b17d6eeff55ab55624ac9578ae3f9210f52112d68791def6a1a1639e422"
+    },
+    {
+      "path": "tools/flasher/src/gui_windows.go",
+      "bytes": 1343,
+      "sha256": "e6fa289f431a468bbb67be0269d5b4963e7bf8e0de087bfd5095a160ca35bc33"
+    },
+    {
+      "path": "tools/flasher/src/imports.go",
+      "bytes": 13388,
+      "sha256": "79de16090ece42bdabb002f722d9dc6e2550127187f633a009f888552565c986"
+    },
+    {
+      "path": "tools/flasher/src/imports_test.go",
+      "bytes": 5469,
+      "sha256": "3d934075a28910a5480af4620bc63aad40a2c2eeb4772b7773d00c0c03cc53ad"
+    },
+    {
+      "path": "tools/flasher/src/layout.go",
+      "bytes": 1971,
+      "sha256": "773ed77070e099c82400dbf67c32f8efa5641c20a93d826511474f6a6fa04fb2"
+    },
+    {
+      "path": "tools/flasher/src/layout_test.go",
+      "bytes": 1721,
+      "sha256": "b474e78d10adb898b2fda8f3c9d30bc2ab4bc09bde295551771cbbc0b6bdd01f"
+    },
+    {
+      "path": "tools/flasher/src/main.go",
+      "bytes": 10288,
+      "sha256": "a3bd8bbff70a80ee75b13769bf6a8b9de4aace656c733a81582aa3c0ea9cacb0"
+    },
+    {
+      "path": "tools/flasher/src/main_test.go",
+      "bytes": 4464,
+      "sha256": "2ece675d4e52d629439bf32b3beea7d87f930b45c365058e3bd01a5b87d96413"
+    },
+    {
+      "path": "tools/flasher/src/release.json",
+      "bytes": 414,
+      "sha256": "ce7e20e664c66298f26c90d1e132a945fa98a6f11cabc86f50184e5316dcc89a"
+    },
+    {
+      "path": "tools/flasher/src/web/app.js",
+      "bytes": 7719,
+      "sha256": "d1ccd5e25c5987356341f8dfa27b2d5ae2d39e167bda5698a8da7df0880fe8ea"
+    },
+    {
+      "path": "tools/flasher/src/web/index.html",
+      "bytes": 5352,
+      "sha256": "a978d9a736d06144c3bbabf2f30a2e2c4e3e6bc6313b59732ce8027e41223ec2"
+    },
+    {
+      "path": "tools/flasher/src/web/style.css",
+      "bytes": 6542,
+      "sha256": "8a53b131deb45514a46e2bdf9408e855e0e51c9ccd2c2c7024e4beaaebef6a4b"
     }
   ]
 }

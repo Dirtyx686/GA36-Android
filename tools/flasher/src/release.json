@@ -1,0 +1,9 @@
+{
+  "version": "R01-Teststand",
+  "file": "GA36-Android7-Clean-R01.img.gz",
+  "compressed_sha256": "2b049022bec1e5c194c7e0aee3c1f2a2081d7437e36bbb193f6b1d12a5ab09f2",
+  "image_sha256": "ea9eb8ed38073af032d3f8863910962dfff2c92f8b2b3cb1a6fe0a8efb2147be",
+  "header_sha256": "da1cbb07dee9f38c93bf2985b716d6fa2defaef36c4db8b2435fe5eb40021b7d",
+  "image_bytes": 31138512896,
+  "board": "GA36 Allwinner A33,512MB RAM"
+}

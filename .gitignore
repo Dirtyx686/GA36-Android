@@ -1,4 +1,5 @@
-# Only source/docs belong in this repository.
+# Source/docs plus explicitly reviewed GUI-only tool package.
+# Android images and firmware remain excluded.
 *.img
 *.bin
 *.iso
@@ -27,3 +28,5 @@ backups/
 roms/
 logs/
 __pycache__/
+
+!tools/flasher/GA36-Flasher-GUI-Windows-Linux.zip

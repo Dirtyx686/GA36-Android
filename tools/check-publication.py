@@ -11,8 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'PUBLICATION-MANIFEST.json'
 MAX_BYTES = 1024 * 1024
 MAX_PHOTO_BYTES = 4 * 1024 * 1024
+MAX_TOOL_BYTES = 12 * 1024 * 1024
+REVIEWED_TOOLS = {'tools/flasher/GA36-Flasher-GUI-Windows-Linux.zip': '38e7b54f6f76aa5443ca43569550fda0d9e45bbcd3ae019b5b0bb673e60c6a0b', 'tools/flasher/screenshots/system.png': '5c28730b7e644efb21d9d7cbc7b5f00ccc27232dfa5f5f5ffb3b1f0750eb891e', 'tools/flasher/screenshots/apks.png': '9a1f33ed266e3e54e9ee095b90c1880d5684157d681bd12466d73c5b82a79609'}
 REVIEWED_PHOTOS = {'assets/photos/android11-boot-logo.jpg': '61fc8723d461787bb703ee3545bf9de56638e2941765f878d88a373d7b871eac', 'assets/photos/android11-starting.jpg': 'd2ffe408bc329fbb43bf23e8d1796276aab9cfa45f374921cbf34c8787483920', 'assets/photos/android11-launcher.jpg': 'da714246dcfb7a8ea1d4e67ea9c9666e0aecfacda2d247e61dbb4dbcda9f7bea', 'assets/photos/android11-settings.jpg': 'c07fcd5d150a2f2099170657bbeec7eefe72d181dceb6a16bcd7e35cc4d6e3f0', 'assets/illustrations/system-selection.jpg': '56e7e115acd0f62133832cb2e4d680b9d2e09009e64d3bc90b9c48a2d4e69cd1', 'assets/photos/android7-device.jpg': '5ac482cb0387b04996f580b9925cc0843e92ba4bbe05d75a38fa4b8d8b1abcf4', 'assets/photos/android7-memory.jpg': 'd168cce2e68e85fd5e8b86aac026a472053507b9555908aa86627f7e9c87d10b', 'assets/photos/board-button-side.jpg': 'e0b17aa31e902d63bfe59c4b1ac964e5b8fe02aa20e3036088334fa1ea170663', 'assets/photos/board-component-side.jpg': '1104d16b5e6d4c18d74955036b5de96e40843becaf4fde68588e1133f67d5890'}
-ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json'}
+ALLOWED_SUFFIXES = {'.md', '.txt', '.c', '.py', '.kl', '.idc', '.json', '.go', '.mod', '.html', '.css', '.js', '.sha256'}
 PATTERNS = [
     r'-----BEGIN [A-Z ]*PRIVATE KEY-----',
     r'github_pat_[A-Za-z0-9_]{20,}',
@@ -73,7 +75,7 @@ def check():
                 raise ValueError('Unsafe or duplicate manifest path')
             if not re.fullmatch(r'[0-9a-f]{64}', entry['sha256']):
                 raise ValueError('Invalid SHA256')
-            limit = MAX_PHOTO_BYTES if rel in REVIEWED_PHOTOS else MAX_BYTES
+            limit = MAX_TOOL_BYTES if rel in REVIEWED_TOOLS else (MAX_PHOTO_BYTES if rel in REVIEWED_PHOTOS else MAX_BYTES)
             if type(entry['bytes']) is not int or not 0 <= entry['bytes'] <= limit:
                 raise ValueError('Invalid file size')
             expected[rel] = entry
@@ -110,9 +112,30 @@ def check():
             if rel not in expected:
                 errors.append('Unreviewed file: ' + rel)
                 continue
-            if p.suffix.lower() not in ALLOWED_SUFFIXES and rel != '.gitignore' and rel not in REVIEWED_PHOTOS:
+            if p.suffix.lower() not in ALLOWED_SUFFIXES and rel != '.gitignore' and rel not in REVIEWED_PHOTOS and rel not in REVIEWED_TOOLS:
                 errors.append('Unexpected file type: ' + rel)
-            if rel in REVIEWED_PHOTOS:
+            if rel in REVIEWED_TOOLS:
+                if p.stat().st_size > MAX_TOOL_BYTES:
+                    errors.append('Oversized reviewed tool: ' + rel)
+                    continue
+                data = p.read_bytes()
+                if hashlib.sha256(data).hexdigest() != REVIEWED_TOOLS[rel]:
+                    errors.append('Tool differs from reviewed artifact: ' + rel)
+                if rel.endswith('.png') and not data.startswith(b'\x89PNG\r\n\x1a\n'):
+                    errors.append('Invalid PNG framing: ' + rel)
+                if rel.endswith('.zip'):
+                    import zipfile
+                    try:
+                        with zipfile.ZipFile(p) as z:
+                            if z.testzip() is not None:
+                                errors.append('Corrupt GUI package: ' + rel)
+                            for info in z.infolist():
+                                name = PurePosixPath(info.filename)
+                                if name.is_absolute() or '..' in name.parts or info.filename.lower().endswith(('.img', '.img.gz', '.iso', '.ext4', '.apk', '.obb', '.cpio', '.so', '.ko')):
+                                    errors.append('Forbidden package content: ' + info.filename)
+                    except (OSError, zipfile.BadZipFile):
+                        errors.append('Invalid GUI ZIP: ' + rel)
+            elif rel in REVIEWED_PHOTOS:
                 if p.stat().st_size > MAX_PHOTO_BYTES:
                     errors.append('Oversized reviewed photo: ' + rel)
                     continue
@@ -141,6 +164,6 @@ if __name__ == '__main__':
     if problems:
         print('\n'.join(problems))
         sys.exit(1)
-    print('PASS: reviewed file set, UTF8/JSON text and nine explicitly allowlisted JPEG images, sizes and SHA256 match; no unreviewed files or symlinks.')
+    print('PASS: reviewed file set, UTF8/JSON text and explicitly allowlisted JPEG/PNG images and GUI-only tool package, sizes and SHA256 match; no unreviewed files or symlinks.')
     print('Local root .git metadata excluded. Gitignore rules do not authorize extra files.')
     print('The manifest is not signed; this check is not a legal or exhaustive secret-scan guarantee.')

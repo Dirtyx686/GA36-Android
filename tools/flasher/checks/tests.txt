@@ -1,0 +1,57 @@
+=== RUN   TestSystemAndImageMountProtection
+--- PASS: TestSystemAndImageMountProtection (0.00s)
+=== RUN   TestDirectReadbackOnTemporaryFile
+--- PASS: TestDirectReadbackOnTemporaryFile (0.01s)
+=== RUN   TestGUISecurity
+--- PASS: TestGUISecurity (0.00s)
+=== RUN   TestGUIDemoFlashAndCancel
+--- PASS: TestGUIDemoFlashAndCancel (4.34s)
+=== RUN   TestGUIImportsAndInvalidImage
+--- PASS: TestGUIImportsAndInvalidImage (0.03s)
+=== RUN   TestGUIStatic
+--- PASS: TestGUIStatic (0.00s)
+=== RUN   TestAPKCompatibility
+--- PASS: TestAPKCompatibility (0.00s)
+=== RUN   TestAPKQueueAtomicAndChecked
+--- PASS: TestAPKQueueAtomicAndChecked (0.00s)
+=== RUN   TestOBBQueueAndExpansionVersion
+--- PASS: TestOBBQueueAndExpansionVersion (0.00s)
+=== RUN   TestOBBMalformedNameRejected
+--- PASS: TestOBBMalformedNameRejected (0.00s)
+=== RUN   TestInboxMarkerRequired
+--- PASS: TestInboxMarkerRequired (0.00s)
+=== RUN   TestManifestTruncationNeverPanics
+--- PASS: TestManifestTruncationNeverPanics (0.00s)
+=== RUN   TestRealAPKOptional
+    imports_test.go:184: no real APK path
+--- SKIP: TestRealAPKOptional (0.00s)
+=== RUN   TestCapacityPatchOnlyChangesDataLength
+--- PASS: TestCapacityPatchOnlyChangesDataLength (0.00s)
+=== RUN   TestCapacityPatchReadback
+--- PASS: TestCapacityPatchReadback (0.00s)
+=== RUN   TestCapacityPatchRejectsUnknownLayouts
+--- PASS: TestCapacityPatchRejectsUnknownLayouts (0.00s)
+=== RUN   TestActualWriteAndReadback
+--- PASS: TestActualWriteAndReadback (0.01s)
+=== RUN   TestCorruptImageNeverWrites
+--- PASS: TestCorruptImageNeverWrites (0.01s)
+=== RUN   TestChangedCardNeverWrites
+--- PASS: TestChangedCardNeverWrites (0.01s)
+=== RUN   TestReadbackCorruptionDetected
+--- PASS: TestReadbackCorruptionDetected (0.01s)
+=== RUN   TestWrongRawLengthAndHash
+=== RUN   TestWrongRawLengthAndHash/short
+=== RUN   TestWrongRawLengthAndHash/long
+=== RUN   TestWrongRawLengthAndHash/hash
+--- PASS: TestWrongRawLengthAndHash (0.03s)
+    --- PASS: TestWrongRawLengthAndHash/short (0.01s)
+    --- PASS: TestWrongRawLengthAndHash/long (0.01s)
+    --- PASS: TestWrongRawLengthAndHash/hash (0.01s)
+=== RUN   TestCancelled
+--- PASS: TestCancelled (0.01s)
+=== RUN   TestDiskFilter
+--- PASS: TestDiskFilter (0.00s)
+=== RUN   TestManifestPathInjection
+--- PASS: TestManifestPathInjection (0.01s)
+PASS
+ok  	ga36.local/flasher	4.499s

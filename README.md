@@ -6,6 +6,16 @@ I develop this project **with AI assistance**. I use AI tools to help analyse fi
 
 **This is an experimental project for one tested board revision. No ready-to-flash image is available here.** The README and current progress report are in English for international readers; some on-device UI labels are still German.
 
+## GA36 Flasher GUI tool
+
+A separate **Windows/Linux x64 tool** now provides a graphical interface for card writing, APK/OBB preparation and installation logs. It runs locally in your browser. Since USB-to-PC connectivity on the handheld is still unresolved, this tool transfers files through a **microSD card reader**, without connecting the console by USB. **No Android image or game data is included.** Current flashing support is limited to the GA36 R01 card layout; this is a test build, with Windows operation now also reported working by the project owner.
+
+[**Download and instructions →**](tools/flasher/README.md)
+
+<a href="tools/flasher/README.md"><img src="tools/flasher/screenshots/system.png" alt="GA36 Flasher graphical interface showing image and card selection in safe demo mode" width="780"></a>
+
+*Actual GUI screenshot in demo mode, with simulated cards. More screenshots and test details are on the tool page.*
+
 ## Android 11 on my handheld
 
 <img src="assets/photos/android11-settings.jpg" alt="GA36 handheld displaying Android 11 Settings" width="360">
