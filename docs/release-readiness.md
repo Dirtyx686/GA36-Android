@@ -21,8 +21,8 @@ being prepared locally and has not yet been created or published.
 
 1. Test each clean image on another card: first boot, full capacity, launcher,
    sound, gamepad, repeated suspend/wake, Power menu and APK/OBB import.
-2. Validate native Windows write/readback and investigate the earlier Defender
-   behavior detection. A fresh executable is not proof of a false positive.
+2. Prepare the Linux-only flasher first. A Windows binary release remains
+   deferred and is not part of that initial package.
 3. Complete matching source/provenance and notice work for retained boot,
    Mali/EGL/gralloc, audio and kernel module components. Do not infer permission
    from another repository merely containing those binaries.

@@ -18,7 +18,7 @@ feedback, saved logs and host/build checks are distinguished below.
 | Launcher | Device P39 uses versionCode101. Clean candidates use the versionCode102 DE/EN derivative, defaulting to English. Themes, console navigation and 2/4/6 game layouts are implemented; fresh-image device acceptance remains open. |
 | Memory | **256 MiB zRAM + 4 GiB SD swap**. Activation was logged on earlier running setups. Physical RAM is still 512 MiB; no repeated performance benchmark establishes a general speed-up. |
 | Clean images | Separate GA7 and GA11 images prepared locally for **32 GB or larger cards**, with first-boot growth. Decompression, hashes and filesystem checks pass; another-card first boot, expansion and app/data import still need physical acceptance. |
-| Desktop Flasher | New native **4.0 Windows/Linux DE/EN** program prepared locally, supporting GA7/GA11 and card-reader APK/OBB import. Thirty file-based tests pass; the owner reports Linux operation. Windows physical writes and Defender review remain pending. |
+| Desktop Flasher | New native **4.0 Windows/Linux DE/EN** program prepared locally, supporting GA7/GA11 and card-reader APK/OBB import. Thirty file-based tests pass; the owner reports Linux operation. The initial release will be Linux only; a Windows binary release is deferred. |
 | Deferred | USB-to-PC/OTG and the second SD slot. TWRP remains optional and paused. |
 
 **No ready-to-flash Android image is published in this repository.** Current
@@ -50,11 +50,9 @@ checks, card writing with complete readback, APK/OBB queueing and INSTALL.TXT
 reading. File transfer uses a microSD card reader because console USB-to-PC
 connectivity remains unresolved. No ROM is included in the flasher package.
 
-The native package remains local while release preparation and Windows
-verification continue. The earlier Windows application-start report was
-withdrawn by the owner as their own mistake. The separate earlier severe
-Defender behavior detection is still unresolved; no false-positive claim or
-instruction to disable protection follows from a rebuild.
+The native package remains local while release preparation continues. The first
+planned binary release is **Linux only**. Windows is deferred. The owner reports
+that the Linux flasher works; this does not certify every physical-card action.
 
 [Earlier browser-based GUI tool](tools/flasher/README.md) — historical version,
 with simulated-card screenshots and no Android image. Its earlier Windows

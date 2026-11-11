@@ -77,14 +77,15 @@
     "Linux_user_feedback": "works; exact operation not specified",
     "Windows_build_vet_and_PE_headers": "checked",
     "actual_Windows_card_write": "pending",
-    "Defender": "earlier severe behavior detection remains unresolved; no false-positive/security-clearance claim",
-    "Windows_app_cannot_run_report": "withdrawn by user as own mistake",
-    "available_in_this_repository": "earlier browser GUI only; new native package currently local"
+    "available_in_this_repository": "earlier browser GUI only; new native package currently local",
+    "initial_public_binary": "Linux x86-64 only",
+    "Windows_binary_release": "deferred"
   },
   "deferred": [
     "USB-to-PC / OTG",
     "secondary SD slot",
-    "optional TWRP"
+    "optional TWRP",
+    "native Windows flasher binary release"
   ],
   "release_preparation": {
     "planned_repository": "Dirtyx686/R36S-Clone-GA36-Android-Releases",
@@ -94,7 +95,6 @@
     "Android11_projects_with_local_source_changes": 13,
     "open": [
       "fresh-card device acceptance",
-      "Windows write/readback and Defender review",
       "matching source/provenance for retained vendor and boot components",
       "embedded launcher artwork review"
     ]

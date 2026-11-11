@@ -33,8 +33,8 @@ checks. The former claim that the sound test is entirely pending is superseded.
   APK/OBB queueing and installation-log reading through the card reader. It uses
   its own Win32/X11 window. Thirty file-based tests pass; the owner reports that
   the Linux flasher works without specifying which operation. Windows builds,
-  static checks and PE headers pass; physical Windows writes and the earlier
-  Defender detection still require verification. No security bypass is advised.
+  static checks and PE headers pass; the first binary release is Linux only.
+  Windows remains deferred.
 - Exact K11 source/configuration and Android 11 pinned manifest/source changes
   collected for a separate public development/release project. The pinned
   manifest contains 863 upstream projects; 13 have collected local source edits.
