@@ -10,36 +10,28 @@ feedback, saved logs and host/build checks are distinguished below.
 
 ## Current status — 12 November 2026
 
-The existing **P39 / K11 #82 dual-boot device setup runs GA7 and GA11**. GA7 is
-Beta V1; GA11 is Alpha V1. The latest owner feedback confirmed GA11 sound and
-GTA trailer playback, and no longer observed the earlier GTA exit crash.
+| Component | Current position |
+| --- | --- |
+| GA7 | **Android 7 Beta V1**, P39 baseline. The existing device setup runs; sound is owner-confirmed. The clean dual-boot image is ready for its first device test. |
+| GA11 | **Android 11 Alpha V1**, P39 baseline. Framework and launcher run on the handheld. The owner confirms sound, GTA trailer playback and that the earlier GTA exit crash is no longer observed. Fresh-image acceptance remains open. |
+| Dual boot | **GA7 + GA11 on one card**, using the original bootloader prefix and raw offsets. Clean English image for **64 GB or larger cards**, with fresh data and no games, saves or accounts. Built locally; ready for the device test. |
+| Kernel | Source-built **K11, Linux 3.4.39 #82**, shared by both systems. The working kernel remains unchanged in the clean image. |
+| Launcher | GA36 launcher with English default, DE/EN strings, themes and **2/4/6 game-tile layouts**. Boot menu and boot animations are also English. |
+| Memory | **512 MiB physical RAM**, **256 MiB zRAM + 4 GiB shared SD swap**. Earlier running setups logged activation; the clean image still needs its own device check. |
+| Storage | **24 GiB fresh userdata per system** initially. Larger-card growth is implemented with equal userdata budgets; physical expansion testing is pending. |
+| Linux flasher | Native **4.1-dual**, DE/EN, image verification and complete write/readback. **34 host tests pass**; the actual clean image is recognized in the isolated GUI test. The first planned public binary is Linux only. |
+| Windows CMD | Private native-console test build, DE/EN, **44 host tests pass**. Actual Windows execution and physical writing are pending. |
+| Open work | Fresh-card boot, larger-card growth, repeated sleep/wake and memory-pressure tests. APK/OBB transfer for this dual layout still needs work; USB-to-PC/OTG and the second SD slot are deferred. |
 
-**The separate clean images failed the owner's boot test.** They are no longer
-recommended. An English clean **GA7 + GA11 dual-boot replacement for 64 GB or
-larger cards** is complete locally and **ready for the device test**. It keeps the
-original bootloader prefix, shared kernel and storage offsets, with fresh data
-for both systems and no games, saves or user accounts. Both ROMs, the launcher,
-boot menu and boot animations default to English. Each userdata filesystem
-begins at 24 GiB. The minimum card size is 63,909,658,624 bytes.
-
-The compressed image is 995,126,132 bytes (about 949 MiB). Complete
-decompression, SHA-256, filesystem and component-region checks pass. These
-checks establish host integrity; fresh-card boot and larger-card growth still
-need the handheld test.
-
-Native Linux flasher **4.1-dual** adds the preserved dual layout and refuses
-marked failed images. The initial public flasher release remains **Linux only**.
-A Windows CMD version is a private test build; Windows runtime/writing is pending.
-The old APK/OBB inbox supports older GA36_APPS cards; the new dual layout has no
-such FAT area, so that transfer path still needs work. USB and slot 2 are deferred.
+The compressed image is **995,126,132 bytes** (about 949 MiB), with a minimum
+card capacity of **63,909,658,624 bytes**. Complete decompression, SHA-256,
+filesystem and component-region checks pass on the host. Physical acceptance
+of this fresh image remains pending. No Android image is published here.
 
 [Current dual-boot report](docs/updates/2026-11-12/clean-dual-boot-status.md) ·
 [Current status JSON](docs/updates/2026-11-12/latest-status.json) ·
 [Release readiness](docs/release-readiness.md) ·
 [Device test plan](docs/updates/2026-11-12/device-test-plan.md)
-
-No Android image is published here. Fresh-card first boot, larger-card growth,
-repeated sleep/wake and memory-pressure regression remain to be tested.
 
 ## Personal development here; public releases separately
 

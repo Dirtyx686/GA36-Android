@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-12",
-  "scope": "Completed clean English dual-boot candidate, curated host/image checks and device test plan; text/JSON status update only. No new binary or ROM publication.",
-  "base_commit": "3b1d5b441ec6cf81675804f283099ce9ca6adcf2",
+  "scope": "README status table restored at owner request; references to earlier standalone images omitted from README. Existing reports and publication boundaries retained.",
+  "base_commit": "79bc12f8ca5fa9017d4f6e48096f504aac50b66f",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -25,8 +25,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7143,
-      "sha256": "c77c3a8aa2a2f6cd6311eb05132418a6663d6bff9f3ab96a56325864ae4d5015"
+      "bytes": 7767,
+      "sha256": "c898d36c51c54f2eb26ed415f5cdc7ea80b0a6aff77eebca11707a8c13d24a4f"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
