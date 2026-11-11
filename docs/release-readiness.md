@@ -4,7 +4,8 @@ Status: **12 November 2026**. Exact board: **GA36-MB V1.2-20260416**,
 R36S-style clone, runtime Allwinner A33 and 512 MiB RAM. No ROM is public.
 
 The owner reports that the earlier separate clean images do not boot. The
-working dual-boot setup is the basis for the new English clean 64-GB+ candidate.
+working dual-boot setup is the basis for the completed local English clean
+64-GB+ candidate, now ready for its first device test.
 It keeps K11 #82, the original bootloader prefix and fixed raw storage offsets,
 with fresh userdata and without installed games, accounts or saves. A Linux
 4.1-dual flasher candidate handles this layout without rewriting its header.
@@ -30,3 +31,10 @@ without bundled game artwork. New clean-image physical acceptance is pending.
 
 TWRP remains optional and paused. MIT applies to original project code only.
 See [NOTICE](../NOTICE.md) and the [current report](updates/2026-11-12/clean-dual-boot-status.md).
+
+
+Host evidence: [curated validation](updates/2026-11-12/host-validation.json)
+records 34 passing Linux flasher tests and 44 passing private Windows CMD tests,
+with one optional real-APK fixture skipped in each suite. The clean image passes
+complete decompression, hashes and filesystem checks. Follow the
+[device test plan](updates/2026-11-12/device-test-plan.md) for physical acceptance.

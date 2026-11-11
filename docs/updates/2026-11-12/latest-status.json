@@ -62,7 +62,15 @@
     "new_image_full_validation": "passed: all regions, filesystems, complete decompression and raw SHA-256",
     "public_ROM_release_uploaded": false,
     "image_compressed_sha256": "89278d53a4688bbd9891e4b22317d5f648850c1d1255ef5269f5a167e796b1ed",
-    "image_raw_sha256": "4ef7e4bb8fb707a8df5e3df8945d9616cb7d2df951906dc1f5f81405829903a6"
+    "image_raw_sha256": "4ef7e4bb8fb707a8df5e3df8945d9616cb7d2df951906dc1f5f81405829903a6",
+    "status": "complete locally; ready for first clean dual-boot device test",
+    "file": "GA36-DualBoot-GA7-GA11-Clean-EN-P39.img.gz",
+    "compressed_bytes": 995126132,
+    "image_bytes": 63909658624,
+    "physical_device_acceptance": "pending",
+    "boot_menu_and_boot_animations_default_locale": "en-US",
+    "reference_manifest": "dualboot-image.json",
+    "curated_host_validation": "host-validation.json"
   },
   "desktop_flasher": {
     "version": "4.1-dual candidate",
@@ -80,7 +88,7 @@
       "APK/OBB queue through card reader",
       "INSTALL.TXT reading"
     ],
-    "file_based_tests_passed": 30,
+    "file_based_tests_passed": 34,
     "Linux_user_feedback": "works; exact operation not specified",
     "Windows_build_vet_and_PE_headers": "checked",
     "actual_Windows_card_write": "pending",
@@ -89,7 +97,11 @@
     "Windows_binary_release": "deferred",
     "dual_boot_header_rewrite": false,
     "known_failed_single_images": "rejected by marked package manifests",
-    "APK_OBB_queue": "older GA36_APPS cards only; new dual layout has no FAT inbox"
+    "APK_OBB_queue": "older GA36_APPS cards only; new dual layout has no FAT inbox",
+    "optional_real_APK_test": "skipped; optional fixture absent",
+    "actual_clean_dual_image_profile": "passed",
+    "DE_EN_GUI": "actual image verified in isolated native GUI demo",
+    "physical_card_write_of_current_dual_package": "not exercised"
   },
   "deferred": [
     "USB-to-PC / OTG",
@@ -116,6 +128,9 @@
     "status": "private test build 1.0 prepared; native console, DE/EN",
     "build_and_host_tests": "passed",
     "Windows_execution_and_card_write": "pending",
-    "initial_public_release": false
-  }
+    "initial_public_release": false,
+    "file_based_tests_passed": 44,
+    "optional_real_APK_test": "skipped; optional fixture absent"
+  },
+  "test_plan": "device-test-plan.md"
 }

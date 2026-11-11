@@ -1,0 +1,22 @@
+{
+  "scope": "reference metadata for locally held image; no ROM binary or download is published here",
+  "compressed_bytes": 995126132,
+  "version": "P39 Clean DualBoot EN \u00b7 GA7 Beta V1 / GA11 Alpha V1",
+  "os": "7+11",
+  "file": "GA36-DualBoot-GA7-GA11-Clean-EN-P39.img.gz",
+  "compressed_sha256": "89278d53a4688bbd9891e4b22317d5f648850c1d1255ef5269f5a167e796b1ed",
+  "image_sha256": "4ef7e4bb8fb707a8df5e3df8945d9616cb7d2df951906dc1f5f81405829903a6",
+  "header_sha256": "a99fb93f64019ce66670ff335cd810f4c878d97c2e3c8e5b11d3e7dc6c0812fa",
+  "image_bytes": 63909658624,
+  "minimum_card_bytes": 63909658624,
+  "board": "R36S Clone \u00b7 GA36-MB V1.2-20260416 \u00b7 Allwinner A33 \u00b7 512MB RAM",
+  "layout": "GA36-dual-v1",
+  "default_locale": "en-US",
+  "zram_mib": 256,
+  "sd_swap_gib": 4,
+  "userdata_bytes_each": 25769803776,
+  "larger_cards": "equal userdata growth on first boot of each OS",
+  "games_included": false,
+  "user_data_included": false,
+  "hardware_acceptance": "pending"
+}

@@ -26,3 +26,15 @@ source archives, game resources, private keys or raw device reports. The older
 browser GUI remains a labelled historical tool. New native Desktop 4.0 and
 GA7/GA11 clean candidates are described as local preparation, with test and
 provenance limits stated.
+
+
+## Completed dual-boot candidate status — 12 November 2026
+
+The owner requested an update to the existing development repository. This
+update records the completed local English 64-GB+ clean dual-boot candidate,
+its image size/checksums, curated host validation and a physical test plan.
+The native Linux flasher has 34 passing host tests; the private Windows CMD
+build has 44. Physical acceptance is still pending. These are text/JSON status
+files only; no new ROM, executable, source archive, private path, signing key,
+raw device log, user data or game package is included. New-repository and
+release publication still await the owner's separate approval.

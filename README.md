@@ -16,10 +16,16 @@ GTA trailer playback, and no longer observed the earlier GTA exit crash.
 
 **The separate clean images failed the owner's boot test.** They are no longer
 recommended. An English clean **GA7 + GA11 dual-boot replacement for 64 GB or
-larger cards** is being prepared from the working boot layout. It keeps the
+larger cards** is complete locally and **ready for the device test**. It keeps the
 original bootloader prefix, shared kernel and storage offsets, with fresh data
-for both systems and no games or user accounts. Host checks and physical
-acceptance are recorded separately in the current report.
+for both systems and no games, saves or user accounts. Both ROMs, the launcher,
+boot menu and boot animations default to English. Each userdata filesystem
+begins at 24 GiB. The minimum card size is 63,909,658,624 bytes.
+
+The compressed image is 995,126,132 bytes (about 949 MiB). Complete
+decompression, SHA-256, filesystem and component-region checks pass. These
+checks establish host integrity; fresh-card boot and larger-card growth still
+need the handheld test.
 
 Native Linux flasher **4.1-dual** adds the preserved dual layout and refuses
 marked failed images. The initial public flasher release remains **Linux only**.
@@ -29,7 +35,8 @@ such FAT area, so that transfer path still needs work. USB and slot 2 are deferr
 
 [Current dual-boot report](docs/updates/2026-11-12/clean-dual-boot-status.md) ·
 [Current status JSON](docs/updates/2026-11-12/latest-status.json) ·
-[Release readiness](docs/release-readiness.md)
+[Release readiness](docs/release-readiness.md) ·
+[Device test plan](docs/updates/2026-11-12/device-test-plan.md)
 
 No Android image is published here. Fresh-card first boot, larger-card growth,
 repeated sleep/wake and memory-pressure regression remain to be tested.
@@ -49,10 +56,14 @@ matching source/provenance work before a public ROM release.
 ## Native Desktop Flasher 4.1-dual candidate
 
 The new flasher uses **its own Win32/X11 desktop window**, without a browser,
-WebView or local web server. The local update supports the original GA7/GA11 dual layout and SHA-256
-checks, card writing with complete readback, APK/OBB queueing and INSTALL.TXT
-reading for older GA36_APPS cards. The new dual image has no such FAT inbox. File transfer uses a microSD card reader because console USB-to-PC
-connectivity remains unresolved. No ROM is included in the flasher package.
+WebView or local web server. The local update supports the original GA7/GA11
+dual layout and SHA-256 checks, with complete write/readback verification.
+**34 host tests pass**; the actual clean image is recognized in the isolated
+DE/EN native GUI test. Physical writing of this new package remains untested.
+
+APK/OBB queueing and INSTALL.TXT reading apply to older GA36_APPS cards. The
+new dual image has no such FAT inbox, so this transfer route still needs work.
+USB-to-PC remains unresolved. No ROM is included in the flasher package.
 
 The native package remains local while release preparation continues. The first
 planned binary release is **Linux only**. Windows is deferred. The owner reports

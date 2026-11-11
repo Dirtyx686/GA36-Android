@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-12",
+  "scope": "curated host/build evidence for the locally prepared clean dual-boot candidate; physical acceptance is pending",
+  "board": "GA36-MB V1.2-20260416",
+  "baseline": "P39 / K11 Linux 3.4.39 #82",
+  "kernel_unchanged": true,
+  "kernel_sha256": "61d4a9711fb574cf2be4b302d0b785863e5b14e4434f73642a1975d32ec9fd67",
+  "image": {
+    "file": "GA36-DualBoot-GA7-GA11-Clean-EN-P39.img.gz",
+    "compressed_bytes": 995126132,
+    "raw_bytes": 63909658624,
+    "compressed_sha256": "89278d53a4688bbd9891e4b22317d5f648850c1d1255ef5269f5a167e796b1ed",
+    "raw_sha256": "4ef7e4bb8fb707a8df5e3df8945d9616cb7d2df951906dc1f5f81405829903a6",
+    "full_decompression_readback": "passed",
+    "component_region_hashes": "passed",
+    "filesystems": "passed",
+    "original_bootloader_prefix_byte_exact": "passed",
+    "shared_swap_no_holes": "passed",
+    "English_boot_assets_readback": "passed",
+    "Android11_userdata_root_label": "system_data_root_file"
+  },
+  "Linux_flasher": {
+    "version": "4.1-dual",
+    "tests_passed": 34,
+    "tests_skipped": [
+      "TestRealAPKOptional"
+    ],
+    "actual_dual_image_profile": "passed",
+    "known_failed_images": "rejected",
+    "original_dual_header_unchanged": "passed with working 4KiB prefix",
+    "DE_EN_GUI": "actual image inspected in isolated native GUI demo",
+    "sha256": "9dbf8c94f592d6e1ea8f7e5a813bede4048149d687a85e7db5f5ae866fe4b8ce",
+    "physical_card_write": "not exercised for this new package"
+  },
+  "Windows_CMD": {
+    "version": "1.0 private test build",
+    "tests_passed": 44,
+    "tests_skipped": [
+      "TestRealAPKOptional"
+    ],
+    "cross_build_and_static_checks": "passed",
+    "demo_write_and_readback": "isolated simulation passed",
+    "Windows_runtime": "pending",
+    "physical_card_write": "not exercised",
+    "public_binary_release": false
+  },
+  "physical_device_acceptance": "pending",
+  "larger_card_growth_physical_test": "pending",
+  "new_image_zram_and_swap_device_activation": "pending; earlier running configuration had activation logs",
+  "public_ROM_release_uploaded": false,
+  "raw_private_logs_included": false
+}

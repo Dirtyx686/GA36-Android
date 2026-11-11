@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-12",
-  "scope": "Owner reports failed standalone boot; document clean English 64GB+ dual-boot replacement, unchanged original prefix and Linux-first flasher policy. No new ROM or executable publication.",
-  "base_commit": "fd53f4d9ce2d23b5aed1a1d4428f38a24deed556",
+  "scope": "Completed clean English dual-boot candidate, curated host/image checks and device test plan; text/JSON status update only. No new binary or ROM publication.",
+  "base_commit": "3b1d5b441ec6cf81675804f283099ce9ca6adcf2",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -20,13 +20,13 @@
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 2907,
-      "sha256": "08ef11906295addca6bdd31aa6bd0727a97faebfd6ff1af9b18a9ab3744b503f"
+      "bytes": 3570,
+      "sha256": "cb1ee796fb240b3390150c511241902ef2a46906c6f492ba26bef4dd1d041b0c"
     },
     {
       "path": "README.md",
-      "bytes": 6596,
-      "sha256": "4abb86b3dbf345ab98ad80bc053a133ce31487390bb6f28d9928e2902f7d2a5c"
+      "bytes": 7143,
+      "sha256": "c77c3a8aa2a2f6cd6311eb05132418a6663d6bff9f3ab96a56325864ae4d5015"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
@@ -125,8 +125,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 1922,
-      "sha256": "e65814205baf3911273515700a0d108f68563909986b122481b1ecae04ba8e0f"
+      "bytes": 2361,
+      "sha256": "eafe893ed005e9de3e19f4e5eb8564f20d206745abdb555d8a07a14798cdabc6"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -210,13 +210,28 @@
     },
     {
       "path": "docs/updates/2026-11-12/clean-dual-boot-status.md",
-      "bytes": 2641,
-      "sha256": "a6729907b554b601bc492bbd6bb1059fcc3abd725f56bea422cf4ad38a6559c2"
+      "bytes": 3167,
+      "sha256": "ecdbc95cdf1caed83909826a6f01d8507f977a793ebf9606d20f64f2614609c4"
+    },
+    {
+      "path": "docs/updates/2026-11-12/device-test-plan.md",
+      "bytes": 2942,
+      "sha256": "4c02d84bdb3c754b10d9c0c90870dce49f1bb612dd874db66515e73acba1b807"
+    },
+    {
+      "path": "docs/updates/2026-11-12/dualboot-image.json",
+      "bytes": 1001,
+      "sha256": "5c4852cf85c3372f1332fcf47dc0b214ac6e07831f6a9f2b7cb967dd8b68e13d"
+    },
+    {
+      "path": "docs/updates/2026-11-12/host-validation.json",
+      "bytes": 2136,
+      "sha256": "30052fb8252e7e8cc988c5ecb5f0f2420bb5960dda0dc0203fde07eb2db257ae"
     },
     {
       "path": "docs/updates/2026-11-12/latest-status.json",
-      "bytes": 5065,
-      "sha256": "d09cc14e6289f3cf2753fd252673f53c6ce30cf039bb54823f0c39453c57b9b4"
+      "bytes": 5871,
+      "sha256": "a89b9c04b21c7adb792584e575a5a230c55483cf0ee7ee865bbd544cf6a40fb6"
     },
     {
       "path": "docs/usb-status.md",
