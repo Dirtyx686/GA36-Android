@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-12",
+  "repository_role": "owner device development journal; separate source/release repository being prepared",
+  "board": "GA36-MB V1.2-20260416",
+  "handheld": "R36S-style clone; not generic R36S compatibility",
+  "runtime_platform": "Allwinner A33",
+  "physical_ram_MiB": 512,
+  "current_baseline": "P39",
+  "kernel": "source-built K11 / Linux 3.4.39 #82",
+  "android7": {
+    "channel": "Beta V1",
+    "working_device_setup": true,
+    "P39_sound_user_confirmed": true,
+    "separate_clean_image_prepared": true,
+    "clean_image_fresh_card_acceptance": "failed for earlier separate image; new clean dual-boot test pending"
+  },
+  "android11": {
+    "channel": "Alpha V1",
+    "framework_and_launcher_run_on_device": true,
+    "sound_user_confirmed": true,
+    "GTA_exit_crash_no_longer_observed_by_user": true,
+    "GTA_trailer_plays_user_confirmed": true,
+    "exact_feedback_build_unspecified": true,
+    "complete_runtime_acceptance": false,
+    "intermittent_black_screen_wake_and_memory_pressure_regression": "not signed off by latest general feedback",
+    "separate_clean_image_prepared": true,
+    "clean_image_fresh_card_acceptance": "failed for earlier separate image; new clean dual-boot test pending"
+  },
+  "launcher": {
+    "device_P39_versionCode": 101,
+    "clean_image_language_derivative_versionCode": 102,
+    "languages": [
+      "en",
+      "de"
+    ],
+    "default_clean_ROM_locale": "en-US",
+    "themes_and_2_4_6_library_layouts": true,
+    "Dpad_host_navigation_checks": "passed",
+    "clean_image_launcher_physical_test": "pending"
+  },
+  "memory": {
+    "physical_RAM_MiB": 512,
+    "zram_MiB": 256,
+    "sd_swap_GiB": 4,
+    "earlier_device_activation_logged": true,
+    "clean_image_swap_fully_allocated_no_holes": "host checked",
+    "repeated_measured_performance_gain": false
+  },
+  "clean_packages": {
+    "earlier_standalone_images": "user reports no boot; marked not_for_flashing",
+    "replacement": "English clean dual boot, GA7 and GA11",
+    "layout": "GA36-dual-v1",
+    "minimum_card_bytes": 63909658624,
+    "original_bootloader_prefix": "preserved byte-for-byte; no DOS-MBR rewrite",
+    "kernel": "K11 #82 unchanged",
+    "userdata_bytes_each": 25769803776,
+    "larger_cards": "raw pool grows before mount; userdata budgets split equally",
+    "installed_games_user_accounts_and_saves_included": false,
+    "bundled_SkyRunner_system_APK": "removed from new GA7 derivative",
+    "embedded_game_artwork": "omitted from new launcher resource variant; private original kept",
+    "Android11_fresh_data_root_label": "system_data_root_file as specified by platform policy",
+    "new_image_full_validation": "passed: all regions, filesystems, complete decompression and raw SHA-256",
+    "public_ROM_release_uploaded": false,
+    "image_compressed_sha256": "89278d53a4688bbd9891e4b22317d5f648850c1d1255ef5269f5a167e796b1ed",
+    "image_raw_sha256": "4ef7e4bb8fb707a8df5e3df8945d9616cb7d2df951906dc1f5f81405829903a6"
+  },
+  "desktop_flasher": {
+    "version": "4.1-dual candidate",
+    "interface": "native Win32/X11 desktop; no browser or local web server",
+    "systems": [
+      "GA7 + GA11 dual boot",
+      "legacy single-system format"
+    ],
+    "languages": [
+      "de",
+      "en"
+    ],
+    "functions": [
+      "image write and complete readback verification",
+      "APK/OBB queue through card reader",
+      "INSTALL.TXT reading"
+    ],
+    "file_based_tests_passed": 30,
+    "Linux_user_feedback": "works; exact operation not specified",
+    "Windows_build_vet_and_PE_headers": "checked",
+    "actual_Windows_card_write": "pending",
+    "available_in_this_repository": "earlier browser GUI only; new native package currently local",
+    "initial_public_binary": "Linux x86-64 only",
+    "Windows_binary_release": "deferred",
+    "dual_boot_header_rewrite": false,
+    "known_failed_single_images": "rejected by marked package manifests",
+    "APK_OBB_queue": "older GA36_APPS cards only; new dual layout has no FAT inbox"
+  },
+  "deferred": [
+    "USB-to-PC / OTG",
+    "secondary SD slot",
+    "optional TWRP",
+    "native Windows flasher binary release"
+  ],
+  "release_preparation": {
+    "planned_repository": "Dirtyx686/R36S-Clone-GA36-Android-Releases",
+    "created_or_published": false,
+    "kernel_source_and_config": "collected locally and source hashes checked",
+    "Android11_upstream_projects_pinned": 863,
+    "Android11_projects_with_local_source_changes": 13,
+    "open": [
+      "new clean dual-boot device acceptance",
+      "larger-card physical growth test",
+      "APK/OBB transfer support for preserved dual layout",
+      "matching source/provenance for retained vendor and boot components",
+      "owner approval before new repository or release publication"
+    ]
+  },
+  "private_keys_raw_device_logs_user_data_published": false,
+  "windows_CMD_flasher": {
+    "status": "private test build 1.0 prepared; native console, DE/EN",
+    "build_and_host_tests": "passed",
+    "Windows_execution_and_card_write": "pending",
+    "initial_public_release": false
+  }
+}

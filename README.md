@@ -8,27 +8,31 @@ boards, clones or revisions is not established.
 I develop the project with AI assistance and test it on my handheld. Device
 feedback, saved logs and host/build checks are distinguished below.
 
-## Current status — 11 November 2026
+## Current status — 12 November 2026
 
-| Component | Current position |
-| --- | --- |
-| GA7 | **Android 7 Beta V1**, P39 baseline; the existing device setup runs and sound is owner-confirmed. A separate clean-image candidate is prepared locally. |
-| GA11 | **Android 11 Alpha V1**, P39 baseline; framework and launcher run on the handheld. The latest owner feedback confirms sound, GTA trailer playback and that the previously reported GTA exit crash is no longer observed. Exact tested build/card was not specified. |
-| Kernel | Source-built **K11, Linux 3.4.39 #82**. Source, configuration and matching source hashes have been collected locally. Retained vendor modules still need separate source/provenance work. |
-| Launcher | Device P39 uses versionCode101. Clean candidates use the versionCode102 DE/EN derivative, defaulting to English. Themes, console navigation and 2/4/6 game layouts are implemented; fresh-image device acceptance remains open. |
-| Memory | **256 MiB zRAM + 4 GiB SD swap**. Activation was logged on earlier running setups. Physical RAM is still 512 MiB; no repeated performance benchmark establishes a general speed-up. |
-| Clean images | Separate GA7 and GA11 images prepared locally for **32 GB or larger cards**, with first-boot growth. Decompression, hashes and filesystem checks pass; another-card first boot, expansion and app/data import still need physical acceptance. |
-| Desktop Flasher | New native **4.0 Windows/Linux DE/EN** program prepared locally, supporting GA7/GA11 and card-reader APK/OBB import. Thirty file-based tests pass; the owner reports Linux operation. The initial release will be Linux only; a Windows binary release is deferred. |
-| Deferred | USB-to-PC/OTG and the second SD slot. TWRP remains optional and paused. |
+The existing **P39 / K11 #82 dual-boot device setup runs GA7 and GA11**. GA7 is
+Beta V1; GA11 is Alpha V1. The latest owner feedback confirmed GA11 sound and
+GTA trailer playback, and no longer observed the earlier GTA exit crash.
 
-**No ready-to-flash Android image is published in this repository.** Current
-images are release candidates, not a compatibility or stability guarantee.
-Intermittent wake behavior, stability under memory pressure and complete
-per-game control regression are not signed off by the latest general feedback.
+**The separate clean images failed the owner's boot test.** They are no longer
+recommended. An English clean **GA7 + GA11 dual-boot replacement for 64 GB or
+larger cards** is being prepared from the working boot layout. It keeps the
+original bootloader prefix, shared kernel and storage offsets, with fresh data
+for both systems and no games or user accounts. Host checks and physical
+acceptance are recorded separately in the current report.
 
-[Current P39/K11 report](docs/updates/2026-11-11/p39-k11-status.md) ·
-[Current status JSON](docs/updates/2026-11-11/latest-status.json) ·
+Native Linux flasher **4.1-dual** adds the preserved dual layout and refuses
+marked failed images. The initial public flasher release remains **Linux only**.
+A Windows CMD version is a private test build; Windows runtime/writing is pending.
+The old APK/OBB inbox supports older GA36_APPS cards; the new dual layout has no
+such FAT area, so that transfer path still needs work. USB and slot 2 are deferred.
+
+[Current dual-boot report](docs/updates/2026-11-12/clean-dual-boot-status.md) ·
+[Current status JSON](docs/updates/2026-11-12/latest-status.json) ·
 [Release readiness](docs/release-readiness.md)
+
+No Android image is published here. Fresh-card first boot, larger-card growth,
+repeated sleep/wake and memory-pressure regression remain to be tested.
 
 ## Personal development here; public releases separately
 
@@ -38,16 +42,16 @@ community source work, build instructions and eventual GA7/GA11 releases.
 It has not yet been created or published. Source and release packages are
 being collected locally; no ROM upload is part of this status update.
 
-The local clean images contain no user accounts or game APK/OBB packages.
-Their current launcher still embeds some game logos; these resources and the
-retained vendor/boot components need separate review before a public image.
+The new clean dual-boot candidate has fresh userdata and removes bundled game
+packages and launcher game artwork. Retained vendor/boot components still need
+matching source/provenance work before a public ROM release.
 
-## Native Desktop Flasher 4.0
+## Native Desktop Flasher 4.1-dual candidate
 
 The new flasher uses **its own Win32/X11 desktop window**, without a browser,
-WebView or local web server. It supports separate GA7/GA11 images, SHA-256
+WebView or local web server. The local update supports the original GA7/GA11 dual layout and SHA-256
 checks, card writing with complete readback, APK/OBB queueing and INSTALL.TXT
-reading. File transfer uses a microSD card reader because console USB-to-PC
+reading for older GA36_APPS cards. The new dual image has no such FAT inbox. File transfer uses a microSD card reader because console USB-to-PC
 connectivity remains unresolved. No ROM is included in the flasher package.
 
 The native package remains local while release preparation continues. The first
@@ -56,7 +60,7 @@ that the Linux flasher works; this does not certify every physical-card action.
 
 [Earlier browser-based GUI tool](tools/flasher/README.md) — historical version,
 with simulated-card screenshots and no Android image. Its earlier Windows
-feedback does not validate the new native 4.0 write path.
+feedback does not validate the new native write path.
 
 ## My handheld and board
 
@@ -91,6 +95,7 @@ code. They are not a complete source representation of the current P39/K11
 integration. Current kernel, Android integration, launcher and native boot
 sources are being assembled for the separate source/release project.
 
+- [Clean dual-boot replacement — 12 November](docs/updates/2026-11-12/clean-dual-boot-status.md)
 - [P39 / K11 — 11 November](docs/updates/2026-11-11/p39-k11-status.md)
 - [P23 / K09 — 10 November](docs/updates/2026-11-10/p23-k09-status.md)
 - [V69 / D03 preparation](docs/updates/2026-11-08/v69-d03-status.md)

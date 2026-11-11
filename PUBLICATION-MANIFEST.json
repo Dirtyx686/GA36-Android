@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "review_date": "2026-11-11",
-  "scope": "Current P39/K11 device status, Linux-first native flasher release policy; original reviewed binary/photo/source set unchanged.",
-  "base_commit": "15816b0429512875fe2edb7bf81272aff4f69a6d",
+  "review_date": "2026-11-12",
+  "scope": "Owner reports failed standalone boot; document clean English 64GB+ dual-boot replacement, unchanged original prefix and Linux-first flasher policy. No new ROM or executable publication.",
+  "base_commit": "fd53f4d9ce2d23b5aed1a1d4428f38a24deed556",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -25,8 +25,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7199,
-      "sha256": "56fe5cca130e61f621cafd5bd1b57918f3c463ef2bdc62daebd821668389601c"
+      "bytes": 6596,
+      "sha256": "4abb86b3dbf345ab98ad80bc053a133ce31487390bb6f28d9928e2902f7d2a5c"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
@@ -125,8 +125,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 2530,
-      "sha256": "6722bdd8496737b0beec4b6a44b518862405c418753ac01a03904cf12d980b63"
+      "bytes": 1922,
+      "sha256": "e65814205baf3911273515700a0d108f68563909986b122481b1ecae04ba8e0f"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -207,6 +207,16 @@
       "path": "docs/updates/2026-11-11/p39-k11-status.md",
       "bytes": 3535,
       "sha256": "96f9580b30b579e158e7722d688168557532f003f70aaef2eeedad5dc00da068"
+    },
+    {
+      "path": "docs/updates/2026-11-12/clean-dual-boot-status.md",
+      "bytes": 2641,
+      "sha256": "a6729907b554b601bc492bbd6bb1059fcc3abd725f56bea422cf4ad38a6559c2"
+    },
+    {
+      "path": "docs/updates/2026-11-12/latest-status.json",
+      "bytes": 5065,
+      "sha256": "d09cc14e6289f3cf2753fd252673f53c6ce30cf039bb54823f0c39453c57b9b4"
     },
     {
       "path": "docs/usb-status.md",
