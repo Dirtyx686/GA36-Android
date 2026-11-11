@@ -15,3 +15,14 @@ The latest Android 11 launcher photograph includes a game tile at the owner's ex
 ## Flasher GUI tool — 10 November 2026
 
 The owner explicitly requested publication of the GA36 Flasher as a repository tool, with screenshots and without Android images. The added scope is the original Go/HTML/CSS/JavaScript flasher source and tests, two GUI demo screenshots, curated test results, usage documentation and one SHA256-pinned GUI-only Windows/Linux executable ZIP. The ZIP contains no Android system image, donor firmware, games, APKs or OBB data. Local build caches, browser automation paths and raw device logs remain excluded. The project owner now also reports successful Windows operation.
+
+## Status-only update — 11 November 2026
+
+The owner requested that this repository remain the personal device development
+record and that its status be updated before a separate source/release project.
+This update changes the README/release-readiness record and adds a curated
+P39/K11 report and status JSON. It does not upload images, new executables,
+source archives, game resources, private keys or raw device reports. The older
+browser GUI remains a labelled historical tool. New native Desktop 4.0 and
+GA7/GA11 clean candidates are described as local preparation, with test and
+provenance limits stated.

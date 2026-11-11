@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-11",
+  "repository_role": "owner device development journal; separate source/release repository being prepared",
+  "board": "GA36-MB V1.2-20260416",
+  "handheld": "R36S-style clone; not generic R36S compatibility",
+  "runtime_platform": "Allwinner A33",
+  "physical_ram_MiB": 512,
+  "current_baseline": "P39",
+  "kernel": "source-built K11 / Linux 3.4.39 #82",
+  "android7": {
+    "channel": "Beta V1",
+    "working_device_setup": true,
+    "P39_sound_user_confirmed": true,
+    "separate_clean_image_prepared": true,
+    "clean_image_fresh_card_acceptance": "pending"
+  },
+  "android11": {
+    "channel": "Alpha V1",
+    "framework_and_launcher_run_on_device": true,
+    "sound_user_confirmed": true,
+    "GTA_exit_crash_no_longer_observed_by_user": true,
+    "GTA_trailer_plays_user_confirmed": true,
+    "exact_feedback_build_unspecified": true,
+    "complete_runtime_acceptance": false,
+    "intermittent_black_screen_wake_and_memory_pressure_regression": "not signed off by latest general feedback",
+    "separate_clean_image_prepared": true,
+    "clean_image_fresh_card_acceptance": "pending"
+  },
+  "launcher": {
+    "device_P39_versionCode": 101,
+    "clean_image_language_derivative_versionCode": 102,
+    "languages": [
+      "en",
+      "de"
+    ],
+    "default_clean_ROM_locale": "en-US",
+    "themes_and_2_4_6_library_layouts": true,
+    "Dpad_host_navigation_checks": "passed",
+    "clean_image_launcher_physical_test": "pending"
+  },
+  "memory": {
+    "physical_RAM_MiB": 512,
+    "zram_MiB": 256,
+    "sd_swap_GiB": 4,
+    "earlier_device_activation_logged": true,
+    "clean_image_swap_fully_allocated_no_holes": "host checked",
+    "repeated_measured_performance_gain": false
+  },
+  "clean_packages": {
+    "GA7": "GA7-Clean-P39.img.gz",
+    "GA11": "GA11-Clean-P39.img.gz",
+    "minimum_card_bytes": 31138512896,
+    "larger_cards": "flasher adjusts p4; native startup grows filesystems",
+    "user_accounts_and_game_APKs_or_OBBs_included": false,
+    "launcher_embedded_game_logos": "present in current local image; omitted from planned public source resources; provenance remains a release item",
+    "full_decompression_SHA256_and_filesystem_checks": "passed",
+    "physical_first_boot_expansion_and_importer": "pending",
+    "public_ROM_release_uploaded": false
+  },
+  "desktop_flasher": {
+    "version": "4.0",
+    "interface": "native Win32/X11 desktop; no browser or local web server",
+    "systems": [
+      "GA7",
+      "GA11"
+    ],
+    "languages": [
+      "de",
+      "en"
+    ],
+    "functions": [
+      "image write and complete readback verification",
+      "APK/OBB queue through card reader",
+      "INSTALL.TXT reading"
+    ],
+    "file_based_tests_passed": 30,
+    "Linux_user_feedback": "works; exact operation not specified",
+    "Windows_build_vet_and_PE_headers": "checked",
+    "actual_Windows_card_write": "pending",
+    "Defender": "earlier severe behavior detection remains unresolved; no false-positive/security-clearance claim",
+    "Windows_app_cannot_run_report": "withdrawn by user as own mistake",
+    "available_in_this_repository": "earlier browser GUI only; new native package currently local"
+  },
+  "deferred": [
+    "USB-to-PC / OTG",
+    "secondary SD slot",
+    "optional TWRP"
+  ],
+  "release_preparation": {
+    "planned_repository": "Dirtyx686/R36S-Clone-GA36-Android-Releases",
+    "created_or_published": false,
+    "kernel_source_and_config": "collected locally and source hashes checked",
+    "Android11_upstream_projects_pinned": 863,
+    "Android11_projects_with_local_source_changes": 13,
+    "open": [
+      "fresh-card device acceptance",
+      "Windows write/readback and Defender review",
+      "matching source/provenance for retained vendor and boot components",
+      "embedded launcher artwork review"
+    ]
+  },
+  "private_keys_raw_device_logs_user_data_published": false
+}

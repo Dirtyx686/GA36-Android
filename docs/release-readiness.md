@@ -1,33 +1,43 @@
-# Experimental image release readiness
+# GA7 / GA11 release preparation
 
-Status: 10 November 2026. **No public Android SD image is provided.** Android 11 P23 with K09 #80 is installed/readback-verified and reported booting; earlier P22 logs confirm framework/GUI startup. Settings navigation is now user-confirmed. The mouse remains unresponsive, fresh P23 detailed logs are pending, and complete runtime acceptance is open. Android 7 D04 #72 is preserved. See the [current report](updates/2026-11-10/p23-k09-status.md).
+Status: **11 November 2026**. Exact target: **GA36-MB V1.2-20260416**, R36S-style
+clone, runtime Allwinner A33 and 512 MiB RAM. Other R36S hardware is not validated.
+No Android image is public here. The separate source/release repository is
+being prepared locally and has not yet been created or published.
 
-## Release roadmap
+## Prepared
 
-My planned public test image uses a **source-built GA36 kernel**. Android 11 now uses K09 #80; Android 7 retains D04 #72. Retained modules and complete hardware/source acceptance remain release work. **TWRP is optional and is not a release requirement.**
+- GA7 Beta V1 and GA11 Alpha V1 clean P39 image candidates; K11 #82.
+- Fresh userdata without accounts or game APK/OBB packages, separate OS images,
+  minimum 31,138,512,896 bytes, partition/filesystem expansion for larger cards.
+- Full image decompression/hashes, filesystem checks, swap allocation checks,
+  ARM growth-helper checks and DE/EN launcher checks passed on the host.
+- Native Desktop Flasher 4.0; 30 file-based tests and Linux/Windows build/static
+  checks passed. Linux operation is owner-reported, with operation unspecified.
+- Complete local K11 source/configuration collection and a pinned Android 11
+  manifest: 863 upstream projects, 13 with collected source edits.
 
-1. **Complete hardware/input acceptance.** Diagnose the P23 mouse failure and test digital/analog controls, sound, Power/wake, repeated starts/restarts and graphics. Settings navigation is confirmed, while complete Settings functionality is not.
-2. **Stabilize the Android 11 integration while preserving Android 7.** Capture fresh P23 logs, investigate DocumentsUI/external-storage hangs and measure memory/I/O/boot performance. P24 is planned, not implemented. The last detailed logs are P22; no stable-release claim follows from basic boot success.
-3. **Prepare reproducible sources and licenses.** Publish the kernel source, configuration, board changes and build instructions. Establish redistribution terms for every included third-party component and satisfy applicable source, notice and license obligations. A source-built kernel does not resolve rights for the remaining binaries.
-4. **Create a clean SD image.** Use newly prepared empty user data. Exclude private data, games, unreviewed game artwork and installation remnants from every partition and staging area.
-5. **Test installation on another card.** Document the exact supported board, card capacity requirements, writing and verification steps, first boot and recovery by rewriting the SD card. Verify cold start, sound, controls, wake and the Power menu.
-6. **Publish an experimental GitHub pre-release.** Include the verified image only after the above gates pass, SHA256 checksums, source/build information, installation/recovery instructions, known limitations and all required licensing notices. State the experimental status and applicable warranty limitations without claiming blanket immunity.
+## Remaining release work
 
-### Optional TWRP package
+1. Test each clean image on another card: first boot, full capacity, launcher,
+   sound, gamepad, repeated suspend/wake, Power menu and APK/OBB import.
+2. Validate native Windows write/readback and investigate the earlier Defender
+   behavior detection. A fresh executable is not proof of a false positive.
+3. Complete matching source/provenance and notice work for retained boot,
+   Mali/EGL/gralloc, audio and kernel module components. Do not infer permission
+   from another repository merely containing those binaries.
+4. Review/remove unestablished embedded game-logo resources from any proposed
+   public launcher/image. Existing test images are not silently changed by
+   preparation of a source-only public tree.
+5. Verify the source/build packages and document absent inputs. A collected
+   source snapshot is not a demonstrated clean-room or bit-identical ROM build.
+6. Present the candidate repository and release asset list to the owner before
+   making the new release project and ROM downloads public.
 
-TWRP can be developed and tested separately and offered later as an optional package. Its development is still paused indefinitely; this roadmap does not claim that work has resumed or that recovery works on hardware. The SD installation and recovery instructions must remain usable without TWRP.
+The latest owner feedback confirms Android 11 sound, GTA trailer playback and
+that the exit crash is no longer observed; exact tested build was unspecified.
+This supersedes an entirely pending sound test, but does not complete all
+regression or fresh-image tests. USB-to-PC/OTG and slot 2 remain deferred.
 
-## Component review findings
-
-- The Android 7 donor base came from an Android SDK system-image package. SDK package terms and the separate open-source component licenses need individual review; the presence of AOSP code does not clear the complete archive. [Android SDK terms](https://developer.android.com/studio/terms).
-- Older Mali/EGL/gralloc binaries and donor audio/ION libraries have identifiable upstream repository matches, but matching redistribution terms and complete source correspondence have not been established. Repository availability alone is insufficient. [Arm driver downloads](https://developer.arm.com/Downloads/-/Mali%20GPUs%20User-Space%20Binary%20Drivers).
-- The vendor kernel/modules and boot components still require matching source/license evidence. The old system BusyBox was matched byte-for-byte to the official 1.20.0 ARMv6 binary; a separate source-built BusyBox 1.36.1 candidate has sources/configuration/notices prepared locally and 17 passing emulation checks, but is not installed or device-accepted. The earlier V39/D03 stages are historical. K09 #80 now boots Android 11 locally and D04 #72 is retained for Android 7; full corresponding-source/rights preparation for retained components remains incomplete. [BusyBox licensing](https://busybox.net/license.html).
-- Amaze has an identifiable official release and GPL licensing; inclusion still requires the applicable source and notice obligations. It does not clear unrelated firmware components. [Amaze source and releases](https://github.com/TeamAmaze/AmazeFileManager).
-
-Missing evidence is an unresolved release condition, not permission to redistribute. No blanket third-party redistribution permission is claimed. MIT has been selected for my own original code; imported material retains its own terms. The scoped license package is separate from this documentation update; see [NOTICE](../NOTICE.md).
-
-The project remains experimental, without a promise of fitness, compatibility or reliability. An experimental label or warranty disclaimer does not replace licensing obligations or remove liability that cannot legally be excluded.
-
-## Latest review outcome
-
-The current graphics, audio and boot components are being retained technically. Matching redistribution evidence for the existing Mali and audio files remains incomplete; GPL A33 Boot0 source was found, but complete corresponding sources for the modified U-Boot remain unestablished. Keeping these components does not mark the image release gates complete. See the [earlier rights review](updates/2026-11-08/source-and-validation-update.md) and [current P23 status](updates/2026-11-10/p23-k09-status.md). No image, kernel or BusyBox binary is included in this documentation update. Android 11 has since booted, but P23 still has unresolved input/stability issues and is not a finished public release.
+TWRP remains optional and paused. Recovery must work by restoring a known-good
+SD image without TWRP. MIT applies to original code only; see [NOTICE](../NOTICE.md).

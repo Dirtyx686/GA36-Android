@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "review_date": "2026-11-10",
-  "scope": "Reviewed sources, curated status, device photos, flasher GUI source/screenshots/checks and pinned GUI-only executable ZIP; no Android/SD images, games, APK/OBB data or raw device logs.",
-  "base_commit": "935bdc80475968c06764696dc105567ed425603d",
+  "review_date": "2026-11-11",
+  "scope": "Status-only P39/K11 development update, preserving earlier reviewed source/photos/tool; no new binary or ROM upload.",
+  "base_commit": "2e3a5bb6441088d2b38801d1205ddf826859417c",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -20,13 +20,13 @@
     },
     {
       "path": "PUBLICATION-SCOPE.md",
-      "bytes": 2295,
-      "sha256": "6e13b52f642e59f86db4c96ccad9798d6334499b77fca5e836dc92720d16d0fb"
+      "bytes": 2907,
+      "sha256": "08ef11906295addca6bdd31aa6bd0727a97faebfd6ff1af9b18a9ab3744b503f"
     },
     {
       "path": "README.md",
-      "bytes": 12072,
-      "sha256": "451db5ae89cdda6647a0f318cc6afb086263308cce628b535b0bdfdfb9df3610"
+      "bytes": 7290,
+      "sha256": "d6acab074b0eeaf7a0ce30ac012c71456a61c767ce4c9852ab195877cbfb937a"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
@@ -125,8 +125,8 @@
     },
     {
       "path": "docs/release-readiness.md",
-      "bytes": 5620,
-      "sha256": "e3a8289b3dc371cb0a8d7d1c4c74f46b08e89563b2a924ccf7cfdb8887b1712c"
+      "bytes": 2558,
+      "sha256": "5bd7e7064eb9e8420dd5b196730a427bc15ccf8b16c560bc0c27680091e87484"
     },
     {
       "path": "docs/updates/2026-11-06/README.md",
@@ -197,6 +197,16 @@
       "path": "docs/updates/2026-11-10/p23-k09-status.md",
       "bytes": 5150,
       "sha256": "e86ac35c7f50a38ae8e1e6cfbf5ced059cb1b30f17e8fa8b568f31e846d9adb5"
+    },
+    {
+      "path": "docs/updates/2026-11-11/latest-status.json",
+      "bytes": 3874,
+      "sha256": "eafad6344204538712dee5caaf0db65b10acec5c8035e7893b99ca29d65d0ce8"
+    },
+    {
+      "path": "docs/updates/2026-11-11/p39-k11-status.md",
+      "bytes": 3587,
+      "sha256": "52eee0f619c95a10211d9ba84396f4ebaf0fe48a1745a6282e3d357ff444630a"
     },
     {
       "path": "docs/usb-status.md",
