@@ -8,62 +8,58 @@ boards, clones or revisions is not established.
 I develop the project with AI assistance and test it on my handheld. Device
 feedback, saved logs and host/build checks are distinguished below.
 
+## Download P39 — EXPERIMENTAL
+
+**64 GB or larger · Linux flasher · no games or user data**
+
+| Download | File |
+| --- | --- |
+| **[Dual-boot ROM](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases/releases/download/dualboot-p39-experimental/GA36-DualBoot-GA7-GA11-Compact-EN-P39.ga36.gz)** | GA7 + GA11 compact package |
+| **[IMAGE-INFOS.json](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases/releases/download/dualboot-p39-experimental/IMAGE-INFOS.json)** | Required beside the ROM |
+| **[Linux desktop flasher](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases/releases/download/dualboot-p39-experimental/GA36-Flasher-Linux-4.2-Compact.tar.gz)** | Extract and run on Linux x86-64 |
+| [Checksums](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases/releases/download/dualboot-p39-experimental/SHA256SUMS.txt) | SHA-256 download verification |
+| [All release files and sources](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases/releases/tag/dualboot-p39-experimental) | Expand **Assets** on the release page |
+
+Keep the ROM and `IMAGE-INFOS.json` in the same folder. Use GA36 Flasher 4.2:
+the compact `.ga36.gz` file is not a raw image for generic flashers. Writing
+overwrites the selected card. **GA11 audio is intermittent; sleep/wake has bugs.**
+
 ## Current status — 12 November 2026
 
 | Component | Current position |
 | --- | --- |
-| GA7 | **Android 7 Beta V1**, P39 baseline. The existing device setup runs; sound is owner-confirmed. The clean dual-boot image is ready for its first device test. |
-| GA11 | **Android 11 Alpha V1**, P39 baseline. Framework and launcher run on the handheld. The owner confirms sound, GTA trailer playback and that the earlier GTA exit crash is no longer observed. Fresh-image acceptance remains open. |
-| Dual boot | **GA7 + GA11 on one card**, using the original bootloader prefix and raw offsets. Clean English image for **64 GB or larger cards**, with fresh data and no games, saves or accounts. Built locally; ready for the device test. |
-| Kernel | Source-built **K11, Linux 3.4.39 #82**, shared by both systems. The working kernel remains unchanged in the clean image. |
-| Launcher | GA36 launcher with English default, DE/EN strings, themes and **2/4/6 game-tile layouts**. Boot menu and boot animations are also English. |
-| Memory | **512 MiB physical RAM**, **256 MiB zRAM + 4 GiB shared SD swap**. Earlier running setups logged activation; the clean image still needs its own device check. |
-| Storage | **24 GiB fresh userdata per system** initially. Larger-card growth is implemented with equal userdata budgets; physical expansion testing is pending. |
-| Linux flasher | Native **4.1-dual**, DE/EN, image verification and complete write/readback. **34 host tests pass**; the actual clean image is recognized in the isolated GUI test. The first planned public binary is Linux only. |
-| Windows CMD | Private native-console test build, DE/EN, **44 host tests pass**. Actual Windows execution and physical writing are pending. |
-| Open work | Fresh-card boot, larger-card growth, repeated sleep/wake and memory-pressure tests. APK/OBB transfer for this dual layout still needs work; USB-to-PC/OTG and the second SD slot are deferred. |
+| GA7 | Android 7 Beta V1, P39. The owner reports the clean dual image boots; GA7 sound works. |
+| GA11 | Android 11 Alpha V1, P39. The owner reports it boots; audio is intermittent. Earlier successful audio/trailer tests do not establish stable sound in the released setup. |
+| Dual boot | Public experimental P39 release, English defaults, clean data without games, accounts or saves. Preserves the working boot prefix and offsets; 64-GB+ card required. |
+| Kernel | Source-built K11, Linux 3.4.39 #82, shared by both systems. Complete source snapshot is attached to the release. |
+| Launcher | GA36 launcher, English default, DE/EN strings, themes and 2/4/6-tile layouts. |
+| Memory | 512 MiB physical RAM; 256 MiB zRAM and one shared 4-GiB SD swap file. This does not add physical RAM or prove a speed improvement. |
+| Storage | Initially 24 GiB fresh userdata per system. Larger-card expansion still needs a physical test. |
+| Linux flasher | Native 4.2 Compact, DE/EN. Host checks pass and the offline source rebuild is bit-identical to the delivered Linux binary. Compact restore and filesystem checks passed on a regular host test file. |
+| Windows | Private test candidate; the initial public binary flasher is Linux only. |
+| Open work | Sleep/wake bugs, intermittent GA11 audio, larger-card growth, sustained memory pressure and APK/OBB import for this dual layout. USB/OTG and SD slot 2 are deferred. |
 
-The compressed image is **995,126,132 bytes** (about 949 MiB), with a minimum
-card capacity of **63,909,658,624 bytes**. Complete decompression, SHA-256,
-filesystem and component-region checks pass on the host. Physical acceptance
-of this fresh image remains pending. No Android image is published here.
-
-[Current dual-boot report](docs/updates/2026-11-12/clean-dual-boot-status.md) ·
-[Current status JSON](docs/updates/2026-11-12/latest-status.json) ·
-[Release readiness](docs/release-readiness.md) ·
-[Device test plan](docs/updates/2026-11-12/device-test-plan.md)
+The compact ROM is 754,064,053 bytes and requires at least 63,909,658,624 bytes
+on the destination card. It writes and verifies about 8.67 GB each while retaining
+the 64-GB layout. It requires a compatible GA36 flasher, not a generic raw writer.
+All 14 uploaded release assets have matching local and GitHub SHA-256 digests.
 
 ## Personal development here; public releases separately
 
-This repository remains my development journal for the exact board above.
-A separate **R36S-Clone-GA36-Android-Releases** project is being prepared for
-community source work, build instructions and eventual GA7/GA11 releases.
-It has not yet been created or published. Source and release packages are
-being collected locally; no ROM upload is part of this status update.
+This repository remains my development journal. Current downloadable ROMs,
+Linux flasher, K11 sources, GA11 integration, native boot and launcher source,
+new device photographs and contribution notes are now collected in the
+[R36S-Clone-GA36-Android-Releases project](https://github.com/Dirtyx686/R36S-Clone-GA36-Android-Releases).
 
-The new clean dual-boot candidate has fresh userdata and removes bundled game
-packages and launcher game artwork. Retained vendor/boot components still need
-matching source/provenance work before a public ROM release.
+This is my first project of this kind, developed with AI assistance and tests
+on my own handheld. Everyone is welcome to contribute, fork and independently
+further develop the project under the included component licenses. Original
+project code is MIT-licensed; third-party terms remain in effect.
 
-## Native Desktop Flasher 4.1-dual candidate
-
-The new flasher uses **its own Win32/X11 desktop window**, without a browser,
-WebView or local web server. The local update supports the original GA7/GA11
-dual layout and SHA-256 checks, with complete write/readback verification.
-**34 host tests pass**; the actual clean image is recognized in the isolated
-DE/EN native GUI test. Physical writing of this new package remains untested.
-
-APK/OBB queueing and INSTALL.TXT reading apply to older GA36_APPS cards. The
-new dual image has no such FAT inbox, so this transfer route still needs work.
-USB-to-PC remains unresolved. No ROM is included in the flasher package.
-
-The native package remains local while release preparation continues. The first
-planned binary release is **Linux only**. Windows is deferred. The owner reports
-that the Linux flasher works; this does not certify every physical-card action.
-
-[Earlier browser-based GUI tool](tools/flasher/README.md) — historical version,
-with simulated-card screenshots and no Android image. Its earlier Windows
-feedback does not validate the new native write path.
+The release is an **experiment**, not a stable daily-use firmware. Historical
+reports below remain dated records and do not override this current status.
+The earlier browser-based flasher in this development repository is historical;
+use the native Linux 4.2 Compact flasher linked above for the current ROM.
 
 ## My handheld and board
 
@@ -96,7 +92,7 @@ provided. Memory photos are snapshots, not current performance benchmarks.
 Published `src/` and `config/` files still include early Android 5 bring-up
 code. They are not a complete source representation of the current P39/K11
 integration. Current kernel, Android integration, launcher and native boot
-sources are being assembled for the separate source/release project.
+sources are available in the separate source/release project linked above.
 
 - [Clean dual-boot replacement — 12 November](docs/updates/2026-11-12/clean-dual-boot-status.md)
 - [P39 / K11 — 11 November](docs/updates/2026-11-11/p39-k11-status.md)
@@ -125,4 +121,4 @@ python3 tools/check-publication.py
 This checks the file set, hashes and selected content; it is not a signed
 release or a legal/security clearance.
 
-[Related Reddit post](https://www.reddit.com/r/R36S/comments/1xomg76/comment/19s6oe904jeyt/)
+[Release post with device photos](https://www.reddit.com/r/R36S/comments/1xuisew/experiment_android_7_11_dualboot_release_for_the/)

@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "review_date": "2026-11-12",
-  "scope": "README status table restored at owner request; references to earlier standalone images omitted from README. Existing reports and publication boundaries retained.",
-  "base_commit": "79bc12f8ca5fa9017d4f6e48096f504aac50b66f",
+  "scope": "Public experimental P39 release announcement and direct downloads; latest device feedback. Historical reports retained.",
+  "base_commit": "b0a8690c9c27db36f577f07524134cbbfe0f2408",
   "manifest_integrity": "Manifest does not hash itself and is not signed. Changes require a new review.",
   "ignored_local_metadata": [
     ".git (repository root only)"
@@ -25,8 +25,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7767,
-      "sha256": "c898d36c51c54f2eb26ed415f5cdc7ea80b0a6aff77eebca11707a8c13d24a4f"
+      "bytes": 7685,
+      "sha256": "36293024582ed74a14820a9f5b01a5ab6707181d9a9f0d08fe0443b1cfc80262"
     },
     {
       "path": "assets/illustrations/system-selection.jpg",
